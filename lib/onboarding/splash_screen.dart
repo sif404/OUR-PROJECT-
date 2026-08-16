@@ -42,8 +42,6 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     final cs = Theme.of(context).colorScheme;
     final isLight = Theme.of(context).brightness == Brightness.light;
-    final tagColor = AppColors.getMuted(isLight);
-    final wordColor = AppColors.getTextP(isLight);
     return GestureDetector(
       onTap: _advance,
       child: Scaffold(
@@ -57,29 +55,35 @@ class _SplashScreenState extends State<SplashScreen> {
               stops: const [0.0, 0.55, 1.0],
             ),
           ),
-          child: Center(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                SizedBox(
-                  width: 210,
-                  child: Image.asset('assets/images/axn_logo.png', fit: BoxFit.contain),
-                ),
-                const SizedBox(height: 28),
-                RichText(
-                  text: TextSpan(
-                    style: AppTextStyles.splashWord.copyWith(color: wordColor),
+          // Logo pinned to the top (centered horizontally), wordmark image +
+          // dots pinned to the bottom.
+          child: SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 48),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  SizedBox(
+                    width: 210,
+                    child: Image.asset('assets/images/axn_logo.png', fit: BoxFit.contain),
+                  ),
+                  Column(
+                    mainAxisSize: MainAxisSize.min,
                     children: [
-                      const TextSpan(text: 'AX'),
-                      TextSpan(text: 'N', style: AppTextStyles.splashWord.copyWith(color: cs.primary)),
+                      // NEW: wordmark + tagline now comes from the designed
+                      // image (axn_wordmark.png) instead of RichText/Text,
+                      // so it matches the AXN/AMRA EXCHANGE NEXUS/Arabic
+                      // tagline lockup exactly.
+                      SizedBox(
+                        width: 160,
+                        child: Image.asset('assets/images/axn_wordmark.png', fit: BoxFit.contain),
+                      ),
+                      const SizedBox(height: 32),
+                      const _PulsingDots(),
                     ],
                   ),
-                ),
-                const SizedBox(height: 8),
-                Text('AMRA EXCHANGE NEXUS', style: AppTextStyles.splashTag.copyWith(color: tagColor)),
-                const SizedBox(height: 64),
-                const _PulsingDots(),
-              ],
+                ],
+              ),
             ),
           ),
         ),

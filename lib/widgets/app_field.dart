@@ -18,6 +18,13 @@ class AppField extends StatefulWidget {
     this.readOnlyValueColor,
     this.readOnly = false,
     this.onTap,
+    this.keyboardType,
+    this.autofillHints,
+    this.textInputAction,
+    this.onChanged,
+    this.onSubmitted,
+    this.required = false,
+    this.hasError = false,
   });
 
   final String label;
@@ -37,6 +44,19 @@ class AppField extends StatefulWidget {
   /// picker (date, etc.) instead of the keyboard, without changing the
   /// field's visual style.
   final VoidCallback? onTap;
+  final TextInputType? keyboardType;
+  final Iterable<String>? autofillHints;
+  final TextInputAction? textInputAction;
+  final ValueChanged<String>? onChanged;
+  final ValueChanged<String>? onSubmitted;
+  // NEW: when true, shows a small red asterisk next to the label to mark
+  // the field as required. Defaults to false so existing screens/fields
+  // that don't pass it are unaffected.
+  final bool required;
+  // NEW: when true, the field border turns red (error color) regardless
+  // of focus state — used to flag a required field left empty after a
+  // failed submit. Defaults to false so existing usages are unaffected.
+  final bool hasError;
 
   @override
   State<AppField> createState() => _AppFieldState();
@@ -45,10 +65,12 @@ class AppField extends StatefulWidget {
 class _AppFieldState extends State<AppField> {
   final FocusNode _focus = FocusNode();
   bool _focused = false;
+  late bool _obscured;
 
   @override
   void initState() {
     super.initState();
+    _obscured = widget.obscure;
     _focus.addListener(() => setState(() => _focused = _focus.hasFocus));
   }
 
@@ -63,13 +85,26 @@ class _AppFieldState extends State<AppField> {
     final cs = Theme.of(context).colorScheme;
     final textStyle = (widget.mono ? AppTextStyles.fieldInputMono : AppTextStyles.fieldInput)
         .copyWith(color: widget.readOnlyValueColor ?? AppColors.voidOf(context));
+    final labelStyle = AppTextStyles.fieldLabel.copyWith(color: AppColors.inkSoftOf(context));
 
     return Padding(
       padding: const EdgeInsetsDirectional.only(bottom: 16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(widget.label.toUpperCase(), style: AppTextStyles.fieldLabel.copyWith(color: AppColors.inkSoftOf(context))),
+          // NEW: label + optional red required-asterisk, same label style
+          // otherwise — no layout/size change when required is false.
+          widget.required
+              ? RichText(
+                  text: TextSpan(
+                    style: labelStyle,
+                    children: [
+                      TextSpan(text: widget.label.toUpperCase()),
+                      TextSpan(text: ' *', style: labelStyle.copyWith(color: Theme.of(context).colorScheme.error)),
+                    ],
+                  ),
+                )
+              : Text(widget.label.toUpperCase(), style: labelStyle),
           const SizedBox(height: 7),
           AnimatedContainer(
             duration: const Duration(milliseconds: 200),
@@ -77,16 +112,25 @@ class _AppFieldState extends State<AppField> {
               color: _focused ? AppColors.surf(context) : AppColors.paperOf(context),
               borderRadius: BorderRadius.circular(14),
               border: Border.all(
-                color: _focused ? cs.primary : AppColors.stoneLineOf(context),
+                // NEW: error color wins over focus/default so a flagged
+                // empty field stays visibly red even while focused.
+                color: widget.hasError
+                    ? cs.error
+                    : (_focused ? cs.primary : AppColors.stoneLineOf(context)),
                 width: 1.6,
               ),
             ),
             child: TextField(
               controller: widget.controller,
               focusNode: _focus,
-              obscureText: widget.obscure,
+              obscureText: widget.obscure ? _obscured : false,
               readOnly: widget.readOnly,
               onTap: widget.onTap,
+              keyboardType: widget.keyboardType,
+              autofillHints: widget.autofillHints,
+              textInputAction: widget.textInputAction,
+              onChanged: widget.onChanged,
+              onSubmitted: widget.onSubmitted,
               style: textStyle,
               cursorColor: cs.primary,
               decoration: InputDecoration(
@@ -95,6 +139,17 @@ class _AppFieldState extends State<AppField> {
                 contentPadding: const EdgeInsetsDirectional.symmetric(horizontal: 15, vertical: 14),
                 hintText: widget.placeholder,
                 hintStyle: textStyle.copyWith(color: AppColors.inkSoftOf(context).withValues(alpha: 0.6)),
+                suffixIcon: widget.obscure
+                    ? IconButton(
+                        splashRadius: 18,
+                        icon: Icon(
+                          _obscured ? Icons.visibility_off_rounded : Icons.visibility_rounded,
+                          size: 20,
+                          color: AppColors.inkSoftOf(context),
+                        ),
+                        onPressed: () => setState(() => _obscured = !_obscured),
+                      )
+                    : null,
               ),
             ),
           ),
