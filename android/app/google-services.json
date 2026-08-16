@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "826077245228",
+    "project_id": "axn-a947f",
+    "storage_bucket": "axn-a947f.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:826077245228:android:01c51ef14cf48f7312c689",
+        "android_client_info": {
+          "package_name": "com.example.axn_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBltqKnXVcgQekX7RrA9b-Y__Qy6J0UxuE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
