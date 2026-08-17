@@ -40,3 +40,4 @@ windows/flutter/ephemeral/
 # Linux
 linux/flutter/ephemeral/
 .env
+node_modules/
