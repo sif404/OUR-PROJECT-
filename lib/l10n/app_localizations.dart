@@ -4396,4 +4396,57 @@ AppLocalizations lookupAppLocalizations(Locale locale) {
       'an issue with the localizations generation tool. Please file an issue '
       'on GitHub with a reproducible sample app and the gen-l10n configuration '
       'that was used.');
+
+  String get food_bizmodel_desc;
+  String get food_bizmodel_label;
+  String get food_bizmodel_title;
+  String get food_brand_habibah_category;
+  String get food_brand_habibah_tag;
+  String get food_brand_mansafha_category;
+  String get food_brand_mansafha_tag;
+  String get food_brand_qahwa_category;
+  String get food_brand_qahwa_tag;
+  String get food_cat_coffee;
+  String get food_cat_jordanian;
+  String get food_cat_quickBite;
+  String get food_cat_sweets;
+  String get food_chip_eventDiscovery;
+  String get food_chip_futureOffers;
+  String get food_chip_partnerVisibility;
+  String get food_explore;
+  String get food_eyebrow;
+  String get food_hero_badge;
+  String get food_hero_desc;
+  String get food_hero_title;
+  String get food_pill_group;
+  String get food_pill_local;
+  String get food_pill_quick;
+  String get food_section_count;
+  String get food_section_eyebrow;
+  String get food_section_title;
+  String get food_subtitle;
+  String get food_title;
+  String get facilities_care_desc;
+  String get facilities_care_label;
+  String get facilities_care_title;
+  String get facilities_eyebrow;
+  String get facilities_health_body;
+  String get facilities_health_chip1;
+  String get facilities_health_chip2;
+  String get facilities_health_label;
+  String get facilities_health_title;
+  String get facilities_note;
+  String get facilities_prayer_body;
+  String get facilities_prayer_chip1;
+  String get facilities_prayer_chip2;
+  String get facilities_prayer_label;
+  String get facilities_prayer_title;
+  String get facilities_quick_health_subtitle;
+  String get facilities_quick_health_title;
+  String get facilities_quick_prayer_subtitle;
+  String get facilities_quick_prayer_title;
+  String get facilities_section_label;
+  String get facilities_section_title;
+  String get facilities_subtitle;
+  String get facilities_title;
 }

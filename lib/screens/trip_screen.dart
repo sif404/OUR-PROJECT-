@@ -4,14 +4,12 @@
 // (TRIP.html). Drop this file into an existing Flutter project and use
 // `EveningPlanScreen` as you would any other widget/page.
 //
-// NOTE ON FONTS: the original design uses "Poppins" and "Playfair Display"
-// from Google Fonts. This file references them by family name only
-// (no network / google_fonts dependency, per the "no extra deps unless
-// absolutely necessary" requirement). If you want the exact webfonts,
-// add the `google_fonts` package or bundle the .ttf files and register
-// them in pubspec.yaml under the same family names used below
-// ('Poppins' / 'PlayfairDisplay'); otherwise Flutter will fall back to
-// the platform default font, which will still preserve size/weight/layout.
+// VISUAL SYSTEM: this screen now uses the project's official design
+// system directly — `AppColors` (../theme/app_colors.dart) and
+// `AppTextStyles` (../theme/app_text_styles.dart) — instead of a local,
+// divergent palette/typography. Font families follow the rest of AXN:
+// El Messiri for headings, IBM Plex Sans Arabic for body copy, and
+// IBM Plex Mono for labels/eyebrow/mono chips.
 //
 // NOTE ON "Get directions": the HTML opens a Google Maps search URL in a
 // new tab. That functionality needs the `url_launcher` package (a very
@@ -27,233 +25,17 @@ import 'package:flutter/services.dart' show Clipboard, ClipboardData;
 import 'package:url_launcher/url_launcher.dart';
 
 import '../models/app_scope.dart';
-
-// =========================================================================
-// COLORS
-// =========================================================================
-
-class AppColors {
-  AppColors._();
-
-  static const Color pageBg = Color(0xFFE9E2D6); // outer body background
-  static const Color bg = Color(0xFFFDFBF7);
-  static const Color bgSoft = Color(0xFFFBF6EE);
-  static const Color ink = Color(0xFF221F1B);
-  static const Color muted = Color(0xFF8C8577);
-  static const Color line = Color(0x14221F1B); // rgba(34,31,27,0.08)
-  static const Color teal = Color(0xFF8B1E2E);
-  static const Color tealSoft = Color(0xFFFBE9EA);
-  static const Color amber = Color(0xFFE29A34);
-  static const Color amberSoft = Color(0xFFFBEDD8);
-  static const Color coral = Color(0xFFEF6F49);
-  static const Color coralSoft = Color(0xFFFCE6DD);
-  static const Color violet = Color(0xFF8A79EE);
-  static const Color violetSoft = Color(0xFFEEEBFC);
-  static const Color maroon = Color(0xFF8B1E2E);
-
-  static const Color dotIdle = Color(0xFFD9D0BF);
-  static const Color dashedLine = Color(0xFFD9CFBB);
-  static const Color toastBg = Color(0xFF1D1B18);
-  static const Color nextCardBorder = Color(0x598B1E2E); // rgba(139,30,46,.35)
-}
-
-// =========================================================================
-// TEXT STYLES
-// =========================================================================
-
-class AppText {
-  AppText._();
-
-  static const String poppins = 'Poppins';
-  static const String playfair = 'PlayfairDisplay';
-
-  static const TextStyle h1 = TextStyle(
-    fontFamily: playfair,
-    fontSize: 22,
-    fontWeight: FontWeight.w800,
-    color: AppColors.ink,
-    height: 1.2,
-  );
-
-  static const TextStyle h2 = TextStyle(
-    fontFamily: poppins,
-    fontSize: 12.5,
-    color: AppColors.muted,
-    height: 1.3,
-  );
-
-  static const TextStyle chip = TextStyle(
-    fontFamily: poppins,
-    fontSize: 11.5,
-    fontWeight: FontWeight.w600,
-    color: AppColors.ink,
-  );
-
-  static const TextStyle noteTitle = TextStyle(
-    fontFamily: poppins,
-    fontSize: 12.5,
-    fontWeight: FontWeight.w700,
-    color: AppColors.ink,
-  );
-
-  static const TextStyle noteSub = TextStyle(
-    fontFamily: poppins,
-    fontSize: 11.5,
-    color: AppColors.muted,
-    height: 1.4,
-  );
-
-  static const TextStyle countdownChip = TextStyle(
-    fontFamily: poppins,
-    fontSize: 10.5,
-    fontWeight: FontWeight.w700,
-    color: AppColors.coral,
-  );
-
-  static const TextStyle timeLabel = TextStyle(
-    fontFamily: poppins,
-    fontSize: 11,
-    color: AppColors.muted,
-  );
-
-  static const TextStyle timeLabelNext = TextStyle(
-    fontFamily: poppins,
-    fontSize: 11,
-    fontWeight: FontWeight.w700,
-    color: AppColors.teal,
-  );
-
-  static const TextStyle stopTitle = TextStyle(
-    fontFamily: poppins,
-    fontSize: 14,
-    fontWeight: FontWeight.w700,
-    color: AppColors.ink,
-  );
-
-  static const TextStyle stopSub = TextStyle(
-    fontFamily: poppins,
-    fontSize: 12,
-    color: AppColors.muted,
-  );
-
-  static const TextStyle stopSubAccent = TextStyle(
-    fontFamily: poppins,
-    fontSize: 12,
-    fontWeight: FontWeight.w600,
-    color: AppColors.teal,
-  );
-
-  static const TextStyle addStopBtn = TextStyle(
-    fontFamily: poppins,
-    fontSize: 12.5,
-    fontWeight: FontWeight.w600,
-    color: AppColors.muted,
-  );
-
-  static const TextStyle ctaText = TextStyle(
-    fontFamily: poppins,
-    fontSize: 14.5,
-    fontWeight: FontWeight.w700,
-    color: Colors.white,
-  );
-
-  static const TextStyle ctaSub = TextStyle(
-    fontFamily: poppins,
-    fontSize: 10.5,
-    color: AppColors.muted,
-  );
-
-  static const TextStyle sheetTitle = TextStyle(
-    fontFamily: playfair,
-    fontSize: 17,
-    fontWeight: FontWeight.w800,
-    color: AppColors.ink,
-  );
-
-  static const TextStyle addSheetTitle = TextStyle(
-    fontFamily: playfair,
-    fontSize: 17,
-    fontWeight: FontWeight.w800,
-    color: AppColors.ink,
-  );
-
-  static const TextStyle sheetSub = TextStyle(
-    fontFamily: poppins,
-    fontSize: 12,
-    color: AppColors.muted,
-  );
-
-  static const TextStyle sheetNote = TextStyle(
-    fontFamily: poppins,
-    fontSize: 12,
-    color: AppColors.ink,
-    height: 1.5,
-  );
-
-  static const TextStyle sheetBtn = TextStyle(
-    fontFamily: poppins,
-    fontSize: 14,
-    fontWeight: FontWeight.w700,
-    color: Colors.white,
-  );
-
-  static const TextStyle fieldLabel = TextStyle(
-    fontFamily: poppins,
-    fontSize: 11.5,
-    fontWeight: FontWeight.w700,
-    color: AppColors.ink,
-  );
-
-  static const TextStyle fieldInput = TextStyle(
-    fontFamily: poppins,
-    fontSize: 13,
-    color: AppColors.ink,
-  );
-
-  static const TextStyle catOpt = TextStyle(
-    fontFamily: poppins,
-    fontSize: 12,
-    fontWeight: FontWeight.w600,
-    color: AppColors.muted,
-  );
-
-  static const TextStyle catOptActive = TextStyle(
-    fontFamily: poppins,
-    fontSize: 12,
-    fontWeight: FontWeight.w600,
-    color: Colors.white,
-  );
-
-  static const TextStyle formError = TextStyle(
-    fontFamily: poppins,
-    fontSize: 11,
-    color: AppColors.coral,
-  );
-
-  static const TextStyle pushTitle = TextStyle(
-    fontFamily: poppins,
-    fontSize: 12.5,
-    fontWeight: FontWeight.w700,
-    color: Colors.white,
-  );
-
-  static const TextStyle pushSub = TextStyle(
-    fontFamily: poppins,
-    fontSize: 11,
-    color: Color(0xBFFFFFFF),
-  );
-
-  static const TextStyle toast = TextStyle(
-    fontFamily: poppins,
-    fontSize: 12,
-    fontWeight: FontWeight.w600,
-    color: Colors.white,
-  );
-}
+import '../theme/app_colors.dart';
+import '../theme/app_text_styles.dart';
 
 // =========================================================================
 // RADII / SPACING
 // =========================================================================
+//
+// Purely structural (not color/typography) tokens — kept local since the
+// shared design-system files don't define a spacing/radius scale of
+// their own for this screen. Values preserved from the original screen
+// to keep layout/hierarchy unchanged.
 
 class AppRadii {
   AppRadii._();
@@ -330,29 +112,29 @@ extension StopCategoryData on StopCategory {
         return const CategoryDef(
           label: 'Food & drink',
           iconKey: IconKey.cup,
-          color: AppColors.teal,
-          soft: AppColors.tealSoft,
+          color: AppColors.ember,
+          soft: AppColors.emberTint,
         );
       case StopCategory.sport:
         return const CategoryDef(
           label: 'Sport',
           iconKey: IconKey.ball,
-          color: AppColors.coral,
-          soft: AppColors.coralSoft,
+          color: AppColors.pitch,
+          soft: AppColors.pitchTint,
         );
       case StopCategory.art:
         return const CategoryDef(
           label: 'Art & culture',
           iconKey: IconKey.palette,
-          color: AppColors.violet,
-          soft: AppColors.violetSoft,
+          color: AppColors.dome,
+          soft: AppColors.stone,
         );
       case StopCategory.relax:
         return const CategoryDef(
           label: 'Relax',
           iconKey: IconKey.clock,
-          color: AppColors.amber,
-          soft: AppColors.amberSoft,
+          color: AppColors.gold,
+          soft: AppColors.goldSoft,
         );
     }
   }
@@ -453,8 +235,8 @@ class _EveningPlanScreenState extends State<EveningPlanScreen> {
       time: '6:00 PM',
       minutes: 18 * 60,
       iconKey: IconKey.flag,
-      color: AppColors.amber,
-      soft: AppColors.amberSoft,
+      color: AppColors.gold,
+      soft: AppColors.goldSoft,
       sub: 'Jersey meet-up · 6 min walk',
     ),
     StopItem(
@@ -463,8 +245,8 @@ class _EveningPlanScreenState extends State<EveningPlanScreen> {
       time: '7:00 PM',
       minutes: 19 * 60,
       iconKey: IconKey.ball,
-      color: AppColors.coral,
-      soft: AppColors.coralSoft,
+      color: AppColors.pitch,
+      soft: AppColors.pitchTint,
       sub: 'Kickoff · Public screening',
       note:
           'Leave home by 5:40 — roads near the stadium fill up fast before kickoff.',
@@ -475,8 +257,8 @@ class _EveningPlanScreenState extends State<EveningPlanScreen> {
       time: '8:15 PM',
       minutes: 20 * 60 + 15,
       iconKey: IconKey.palette,
-      color: AppColors.violet,
-      soft: AppColors.violetSoft,
+      color: AppColors.dome,
+      soft: AppColors.stone,
       sub: 'Live sketching · 10 min walk',
     ),
     StopItem(
@@ -485,8 +267,8 @@ class _EveningPlanScreenState extends State<EveningPlanScreen> {
       time: '9:30 PM',
       minutes: 21 * 60 + 30,
       iconKey: IconKey.clock,
-      color: AppColors.teal,
-      soft: AppColors.tealSoft,
+      color: AppColors.gold,
+      soft: AppColors.goldSoft,
       sub: 'Seated · 5 min walk',
     ),
   ];
@@ -744,7 +526,7 @@ class _EveningPlanScreenState extends State<EveningPlanScreen> {
   Widget build(BuildContext context) {
     final scope = AppScope.of(context);
     return Scaffold(
-      backgroundColor: AppColors.pageBg,
+      backgroundColor: AppColors.bg(context),
       body: SafeArea(
         child: Directionality(
           textDirection: scope.direction,
@@ -756,7 +538,7 @@ class _EveningPlanScreenState extends State<EveningPlanScreen> {
                   gradient: LinearGradient(
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
-                    colors: [Colors.white, AppColors.bg],
+                    colors: [AppColors.white, AppColors.paper],
                     stops: [0, 0.45],
                   ),
                 ),
@@ -764,7 +546,7 @@ class _EveningPlanScreenState extends State<EveningPlanScreen> {
                   children: [
                     Column(
                       children: [
-                        Container(height: 4, color: AppColors.maroon),
+                        Container(height: 4, color: AppColors.ember),
                         Expanded(
                           child: Stack(
                             children: [
@@ -787,8 +569,8 @@ class _EveningPlanScreenState extends State<EveningPlanScreen> {
     );
   }
 
-Widget _buildScrollContent(BuildContext context) {
-      return SingleChildScrollView(
+  Widget _buildScrollContent(BuildContext context) {
+    return SingleChildScrollView(
         padding: const EdgeInsets.only(bottom: 110),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -813,12 +595,12 @@ Widget _buildScrollContent(BuildContext context) {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(scope.t('trip_myEveningPlan'), style: AppText.h1),
+                Text(scope.t('trip_myEveningPlan'), style: AppTextStyles.hTitle()),
                 Padding(
                   padding: const EdgeInsets.only(top: 6),
                   child: Text(
                     '${scope.t('trip_stops', {'count': _stops.length.toString()})} · ${_stops.isNotEmpty ? _stops.first.time : ''} – $_planEndLabel',
-                    style: AppText.h2,
+                    style: AppTextStyles.hSub,
                   ),
                 ),
               ],
@@ -832,9 +614,9 @@ Widget _buildScrollContent(BuildContext context) {
               _IconChipButton(
                 icon: IconKey.trash.data,
                 onTap: _confirmClearPlan,
-                background: AppColors.coralSoft,
-                border: const Color(0x40EF6F49),
-                iconColor: const Color(0xFF993C1D),
+                background: AppColors.emberTintOf(context),
+                border: AppColors.emberDeep.withOpacity(0.25),
+                iconColor: AppColors.emberDeep,
                 semanticLabel: scope.t('trip_clearPlan'),
               ),
               const SizedBox(width: 8),
@@ -853,7 +635,7 @@ Widget _buildScrollContent(BuildContext context) {
         borderRadius: BorderRadius.circular(AppRadii.pill),
         child: Container(
           height: 5,
-          color: const Color(0xFFE7DFD0),
+          color: AppColors.stoneLineOf(context),
           alignment: AlignmentDirectional.centerStart,
           child: LayoutBuilder(
             builder: (context, constraints) {
@@ -865,7 +647,7 @@ Widget _buildScrollContent(BuildContext context) {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(AppRadii.pill),
                   gradient: const LinearGradient(
-                    colors: [AppColors.teal, Color(0xFFB84656)],
+                    colors: [AppColors.ember, AppColors.emberDeep],
                   ),
                 ),
               );
@@ -884,12 +666,12 @@ Widget _buildScrollContent(BuildContext context) {
         duration: const Duration(milliseconds: 300),
         padding: const EdgeInsetsDirectional.symmetric(horizontal: 14, vertical: 12),
         decoration: BoxDecoration(
-          color: urgent ? AppColors.coral : AppColors.coralSoft,
+          color: urgent ? AppColors.emberDeep : AppColors.emberTintOf(context),
           borderRadius: BorderRadius.circular(AppRadii.banner),
           border: Border.all(
             color: urgent
                 ? Colors.transparent
-                : const Color(0x40EF6F49), // rgba(239,111,73,0.25)
+                : AppColors.emberDeep.withOpacity(0.25),
           ),
         ),
         child: Row(
@@ -899,11 +681,11 @@ Widget _buildScrollContent(BuildContext context) {
               width: 28,
               height: 28,
               decoration: const BoxDecoration(
-                color: Colors.white,
+                color: AppColors.white,
                 shape: BoxShape.circle,
               ),
               alignment: Alignment.center,
-              child: Icon(IconKey.alarm.data, size: 15, color: AppColors.coral),
+              child: Icon(IconKey.alarm.data, size: 15, color: AppColors.emberDeep),
             ),
             const SizedBox(width: 10),
             Expanded(
@@ -912,16 +694,20 @@ Widget _buildScrollContent(BuildContext context) {
                 children: [
                   Text(
                     _noteTitle(context),
-                    style: AppText.noteTitle.copyWith(
-                      color: urgent ? Colors.white : AppColors.ink,
+                    style: AppTextStyles.plexArabic(
+                      fontSize: 12.5,
+                      fontWeight: FontWeight.w700,
+                      color: urgent ? AppColors.white : AppColors.void_,
                     ),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 2),
                     child: Text(
                       _noteSub(context),
-                      style: AppText.noteSub.copyWith(
-                        color: urgent ? Colors.white : AppColors.muted,
+                      style: AppTextStyles.plexArabic(
+                        fontSize: 11.5,
+                        color: urgent ? AppColors.white : AppColors.inkSoft,
+                        height: 1.4,
                       ),
                     ),
                   ),
@@ -964,12 +750,12 @@ Widget _buildScrollContent(BuildContext context) {
       bottom: 0,
       child: Container(
         padding: const EdgeInsetsDirectional.fromSTEB(20, 16, 20, 22),
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
-            colors: [Color(0x00F6EFE4), AppColors.bg],
-            stops: [0, 0.3],
+            colors: [AppColors.paperOf(context).withOpacity(0.0), AppColors.paperOf(context)],
+            stops: const [0, 0.3],
           ),
         ),
         child: Column(
@@ -982,7 +768,7 @@ Widget _buildScrollContent(BuildContext context) {
               padding: const EdgeInsets.only(top: 8),
               child: Text(
                 scope.t('trip_opensDirectionsNextStop'),
-                style: AppText.ctaSub,
+                style: AppTextStyles.footerNote,
                 textAlign: TextAlign.center,
               ),
             ),
@@ -1007,7 +793,7 @@ Widget _buildScrollContent(BuildContext context) {
           child: Container(
             padding: const EdgeInsetsDirectional.symmetric(horizontal: 14, vertical: 12),
             decoration: BoxDecoration(
-              color: AppColors.toastBg,
+              color: AppColors.void_,
               borderRadius: BorderRadius.circular(16),
               boxShadow: const [
                 BoxShadow(
@@ -1024,23 +810,29 @@ Widget _buildScrollContent(BuildContext context) {
                   width: 28,
                   height: 28,
                   decoration: BoxDecoration(
-                    color: Colors.white.withOpacity(0.15),
+                    color: AppColors.white.withOpacity(0.15),
                     shape: BoxShape.circle,
                   ),
                   alignment: Alignment.center,
-                  child: Icon(IconKey.bell.data, size: 15, color: Colors.white),
+                  child: Icon(IconKey.bell.data, size: 15, color: AppColors.white),
                 ),
                 const SizedBox(width: 10),
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(scope.t('trip_tonightsPlan'), style: AppText.pushTitle),
+                      Text(
+                        scope.t('trip_tonightsPlan'),
+                        style: AppTextStyles.notifTitle.copyWith(color: AppColors.white),
+                      ),
                       Padding(
                         padding: const EdgeInsets.only(top: 2),
                         child: Text(
                           scope.t('trip_leaveByHint', {'time': '5:40'}),
-                          style: AppText.pushSub,
+                          style: AppTextStyles.notifBody.copyWith(
+                            fontSize: 11,
+                            color: AppColors.white.withOpacity(0.75),
+                          ),
                         ),
                       ),
                     ],
@@ -1070,10 +862,17 @@ Widget _buildScrollContent(BuildContext context) {
               child: Container(
                 padding: const EdgeInsetsDirectional.symmetric(horizontal: 16, vertical: 10),
                 decoration: BoxDecoration(
-                  color: AppColors.toastBg,
+                  color: AppColors.void_,
                   borderRadius: BorderRadius.circular(AppRadii.pill),
                 ),
-                child: Text(_toastMessage, style: AppText.toast),
+                child: Text(
+                  _toastMessage,
+                  style: AppTextStyles.mono(
+                    fontSize: 12,
+                    fontWeight: FontWeight.w600,
+                    color: AppColors.white,
+                  ),
+                ),
               ),
             ),
           ),
@@ -1107,17 +906,17 @@ class _GradientCtaButton extends StatelessWidget {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(AppRadii.cta),
             gradient: const LinearGradient(
-              colors: [Color(0xFFA6303F), Color(0xFF8B1E2E)],
+              colors: [AppColors.ember, AppColors.emberDeep],
             ),
-            boxShadow: const [
+            boxShadow: [
               BoxShadow(
-                color: Color(0x8C8B1E2E),
+                color: AppColors.emberDeep.withOpacity(0.55),
                 blurRadius: 30,
-                offset: Offset(0, 16),
+                offset: const Offset(0, 16),
               ),
             ],
           ),
-          child: Text(label, style: AppText.ctaText),
+          child: Text(label, style: AppTextStyles.btn(color: AppColors.white)),
         ),
       ),
     );
@@ -1134,16 +933,19 @@ class _ChipButton extends StatelessWidget {
     return Container(
       padding: const EdgeInsetsDirectional.symmetric(horizontal: 10, vertical: 7),
       decoration: BoxDecoration(
-        color: AppColors.bgSoft,
+        color: AppColors.paperOf(context),
         borderRadius: BorderRadius.circular(AppRadii.pill),
-        border: Border.all(color: AppColors.line),
+        border: Border.all(color: AppColors.stoneLine),
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(icon, size: 14, color: AppColors.ink),
+          Icon(icon, size: 14, color: AppColors.void_),
           const SizedBox(width: 6),
-          Text(label, style: AppText.chip),
+          Text(
+            label,
+            style: AppTextStyles.mono(fontSize: 11.5, fontWeight: FontWeight.w600, color: AppColors.void_),
+          ),
         ],
       ),
     );
@@ -1169,10 +971,10 @@ class _IconChipButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: background ?? AppColors.bgSoft,
+      color: background ?? AppColors.paperOf(context),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(AppRadii.pill),
-        side: BorderSide(color: border ?? AppColors.line),
+        side: BorderSide(color: border ?? AppColors.stoneLine),
       ),
       child: InkWell(
         customBorder: const CircleBorder(),
@@ -1183,7 +985,7 @@ class _IconChipButton extends StatelessWidget {
           child: Semantics(
             label: semanticLabel,
             button: true,
-            child: Icon(icon, size: 15, color: iconColor ?? AppColors.ink),
+            child: Icon(icon, size: 15, color: iconColor ?? AppColors.void_),
           ),
         ),
       ),
@@ -1262,10 +1064,10 @@ class _TimelineRow extends StatelessWidget {
                           height: 16,
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
-                            color: AppColors.teal,
-                            boxShadow: const [
+                            color: AppColors.ember,
+                            boxShadow: [
                               BoxShadow(
-                                color: AppColors.tealSoft,
+                                color: AppColors.emberTint,
                                 spreadRadius: 4,
                               ),
                             ],
@@ -1276,15 +1078,17 @@ class _TimelineRow extends StatelessWidget {
                           height: 12,
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
-                            color: Colors.white,
-                            border: Border.all(color: AppColors.dotIdle, width: 2),
+                            color: AppColors.white,
+                            border: Border.all(color: AppColors.stoneLine, width: 2),
                           ),
                         ),
                   Padding(
                     padding: const EdgeInsets.only(top: 6),
                     child: Text(
                       formatTimeLabel(stop.time),
-                      style: isNext ? AppText.timeLabelNext : AppText.timeLabel,
+                      style: isNext
+                          ? AppTextStyles.mono(fontSize: 11, fontWeight: FontWeight.w700, color: AppColors.ember)
+                          : AppTextStyles.mono(fontSize: 11, color: AppColors.inkSoft),
                     ),
                   ),
                   if (!isLast)
@@ -1292,7 +1096,7 @@ class _TimelineRow extends StatelessWidget {
                       child: Padding(
                         padding: const EdgeInsets.only(top: 8),
                         child: Center(
-                          child: Container(width: 2, color: AppColors.line),
+                          child: Container(width: 2, color: AppColors.stoneLine),
                         ),
                       ),
                     ),
@@ -1331,7 +1135,7 @@ class _StopCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: isNext ? Colors.white : AppColors.bgSoft,
+      color: isNext ? AppColors.cardBgOf(context) : AppColors.paperOf(context),
       borderRadius: BorderRadius.circular(AppRadii.stopCard),
       child: InkWell(
         borderRadius: BorderRadius.circular(AppRadii.stopCard),
@@ -1341,14 +1145,14 @@ class _StopCard extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(AppRadii.stopCard),
               border: Border.all(
-                color: isNext ? AppColors.nextCardBorder : AppColors.line,
+                color: isNext ? AppColors.ember.withOpacity(0.35) : AppColors.stoneLine,
               ),
               boxShadow: isNext
-                  ? const [
+                  ? [
                       BoxShadow(
-                        color: Color(0x408B1E2E),
+                        color: AppColors.ember.withOpacity(0.25),
                         blurRadius: 24,
-                        offset: Offset(0, 10),
+                        offset: const Offset(0, 10),
                       ),
                     ]
                   : null,
@@ -1366,12 +1170,17 @@ class _StopCard extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(stop.title, style: AppText.stopTitle),
+                      Text(
+                        stop.title,
+                        style: AppTextStyles.methodTitle.copyWith(color: AppColors.void_),
+                      ),
                       Padding(
                         padding: const EdgeInsets.only(top: 2),
                         child: Text(
                           stop.sub,
-                          style: isNext ? AppText.stopSubAccent : AppText.stopSub,
+                          style: isNext
+                              ? AppTextStyles.plexArabic(fontSize: 12, fontWeight: FontWeight.w600, color: AppColors.ember)
+                              : AppTextStyles.plexArabic(fontSize: 12, color: AppColors.inkSoft),
                         ),
                       ),
                       if (countdownText != null)
@@ -1380,10 +1189,13 @@ class _StopCard extends StatelessWidget {
                           child: Container(
                             padding: const EdgeInsetsDirectional.symmetric(horizontal: 9, vertical: 3),
                             decoration: BoxDecoration(
-                              color: AppColors.coralSoft,
+                              color: AppColors.emberTint,
                               borderRadius: BorderRadius.circular(AppRadii.pill),
                             ),
-                            child: Text(countdownText!, style: AppText.countdownChip),
+                            child: Text(
+                              countdownText!,
+                              style: AppTextStyles.mono(fontSize: 10.5, fontWeight: FontWeight.w700, color: AppColors.emberDeep),
+                            ),
                           ),
                         ),
                     ],
@@ -1420,13 +1232,16 @@ class _AddStopRow extends StatelessWidget {
                 padding: const EdgeInsetsDirectional.symmetric(horizontal: 14, vertical: 12),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(AppRadii.stopCard),
-                  border: Border.all(color: AppColors.dashedLine, width: 1.5),
+                  border: Border.all(color: AppColors.stoneLine, width: 1.5),
                 ),
                 child: Row(
                   children: [
-                    Icon(IconKey.plus.data, size: 14, color: AppColors.muted),
+                    Icon(IconKey.plus.data, size: 14, color: AppColors.inkSoft),
                     const SizedBox(width: 8),
-                    Text(AppScope.of(context).t('trip_addAStop'), style: AppText.addStopBtn),
+                    Text(
+                      AppScope.of(context).t('trip_addAStop'),
+                      style: AppTextStyles.tagline.copyWith(fontSize: 12.5, fontWeight: FontWeight.w600, color: AppColors.inkSoft),
+                    ),
                   ],
                 ),
               ),
@@ -1448,7 +1263,7 @@ class _DashedDot extends StatelessWidget {
       height: 10,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
-        border: Border.all(color: AppColors.dotIdle, width: 2),
+        border: Border.all(color: AppColors.stoneLine, width: 2),
       ),
     );
   }
@@ -1471,9 +1286,9 @@ class _SheetShell extends StatelessWidget {
           maxHeight: MediaQuery.of(context).size.height * 0.82,
         ),
         padding: const EdgeInsetsDirectional.fromSTEB(20, 16, 20, 26),
-        decoration: const BoxDecoration(
-          color: AppColors.bg,
-          borderRadius: BorderRadius.vertical(top: Radius.circular(AppRadii.sheetTop)),
+        decoration: BoxDecoration(
+          color: AppColors.paperOf(context),
+          borderRadius: const BorderRadius.vertical(top: Radius.circular(AppRadii.sheetTop)),
         ),
         child: SingleChildScrollView(
           padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
@@ -1494,7 +1309,7 @@ class _Grabber extends StatelessWidget {
       height: 6,
       margin: const EdgeInsets.only(bottom: 12),
       decoration: BoxDecoration(
-        color: AppColors.line,
+        color: AppColors.stoneLine,
         borderRadius: BorderRadius.circular(AppRadii.pill),
       ),
     );
@@ -1508,7 +1323,7 @@ class _SheetCloseButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: AppColors.bgSoft,
+      color: AppColors.paper,
       shape: const CircleBorder(),
       child: InkWell(
         customBorder: const CircleBorder(),
@@ -1516,7 +1331,7 @@ class _SheetCloseButton extends StatelessWidget {
         child: SizedBox(
           width: 26,
           height: 26,
-          child: Icon(IconKey.x.data, size: 13, color: AppColors.ink),
+          child: Icon(IconKey.x.data, size: 13, color: AppColors.void_),
         ),
       ),
     );
@@ -1544,7 +1359,7 @@ class _ClearPlanDialog extends StatelessWidget {
         width: double.infinity,
         padding: const EdgeInsets.all(20),
         decoration: BoxDecoration(
-          color: AppColors.bg,
+          color: AppColors.paperOf(context),
           borderRadius: BorderRadius.circular(AppRadii.banner),
         ),
         child: Column(
@@ -1554,26 +1369,26 @@ class _ClearPlanDialog extends StatelessWidget {
               width: 40,
               height: 40,
               decoration: const BoxDecoration(
-                color: AppColors.coralSoft,
+                color: AppColors.emberTint,
                 shape: BoxShape.circle,
               ),
               alignment: Alignment.center,
               child: const Icon(
                 Icons.delete_outline_rounded,
                 size: 18,
-                color: Color(0xFF993C1D),
+                color: AppColors.emberDeep,
               ),
             ),
             const SizedBox(height: 10),
             Text(
               scope.t('trip_clearThisPlanTitle'),
-              style: AppText.h1,
+              style: AppTextStyles.hTitle(),
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 6),
             Text(
               scope.t('trip_clearThisPlanBody', {'count': stopCount.toString()}),
-              style: AppText.noteSub,
+              style: AppTextStyles.plexArabic(fontSize: 11.5, color: AppColors.inkSoft, height: 1.4),
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 16),
@@ -1581,10 +1396,10 @@ class _ClearPlanDialog extends StatelessWidget {
               children: [
                 Expanded(
                   child: Material(
-                    color: Colors.white,
+                    color: AppColors.white,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
-                      side: const BorderSide(color: AppColors.line),
+                      side: const BorderSide(color: AppColors.stoneLine),
                     ),
                     child: InkWell(
                       borderRadius: BorderRadius.circular(10),
@@ -1594,7 +1409,7 @@ class _ClearPlanDialog extends StatelessWidget {
                         child: Text(
                           scope.t('trip_cancel'),
                           textAlign: TextAlign.center,
-                          style: AppText.chip,
+                          style: AppTextStyles.mono(fontSize: 11.5, fontWeight: FontWeight.w600, color: AppColors.void_),
                         ),
                       ),
                     ),
@@ -1603,7 +1418,7 @@ class _ClearPlanDialog extends StatelessWidget {
                 const SizedBox(width: 8),
                 Expanded(
                   child: Material(
-                    color: AppColors.maroon,
+                    color: AppColors.emberDeep,
                     borderRadius: BorderRadius.circular(10),
                     child: InkWell(
                       borderRadius: BorderRadius.circular(10),
@@ -1613,12 +1428,7 @@ class _ClearPlanDialog extends StatelessWidget {
                         child: Text(
                           scope.t('trip_clearPlan'),
                           textAlign: TextAlign.center,
-                          style: const TextStyle(
-                            fontFamily: AppText.poppins,
-                            fontSize: 11.5,
-                            fontWeight: FontWeight.w600,
-                            color: Colors.white,
-                          ),
+                          style: AppTextStyles.plexArabic(fontSize: 11.5, fontWeight: FontWeight.w600, color: AppColors.white),
                         ),
                       ),
                     ),
@@ -1663,10 +1473,10 @@ class _StopDetailSheet extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(stop.title, style: AppText.sheetTitle),
+                    Text(stop.title, style: AppTextStyles.stadiumName),
                     Padding(
                       padding: const EdgeInsets.only(top: 4),
-                      child: Text('${stop.time} · ${stop.sub}', style: AppText.sheetSub),
+                      child: Text('${stop.time} · ${stop.sub}', style: AppTextStyles.methodDesc),
                     ),
                   ],
                 ),
@@ -1680,12 +1490,12 @@ class _StopDetailSheet extends StatelessWidget {
               width: double.infinity,
               padding: const EdgeInsetsDirectional.symmetric(horizontal: 14, vertical: 12),
               decoration: BoxDecoration(
-                color: AppColors.coralSoft,
+                color: AppColors.emberTint,
                 borderRadius: BorderRadius.circular(AppRadii.banner),
               ),
               child: RichText(
                 text: TextSpan(
-                  style: AppText.sheetNote,
+                  style: AppTextStyles.plexArabic(fontSize: 12, color: AppColors.void_, height: 1.5),
                   children: [
                     TextSpan(
                       text: AppScope.of(context).t('trip_notePrefix'),
@@ -1701,7 +1511,7 @@ class _StopDetailSheet extends StatelessWidget {
           SizedBox(
             width: double.infinity,
             child: Material(
-              color: AppColors.ink,
+              color: AppColors.void_,
               borderRadius: BorderRadius.circular(AppRadii.sheetBtn),
               child: InkWell(
                 borderRadius: BorderRadius.circular(AppRadii.sheetBtn),
@@ -1709,7 +1519,10 @@ class _StopDetailSheet extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.symmetric(vertical: 14),
                   child: Center(
-                    child: Text(AppScope.of(context).t('trip_getDirections'), style: AppText.sheetBtn),
+                    child: Text(
+                      AppScope.of(context).t('trip_getDirections'),
+                      style: AppTextStyles.btn(color: AppColors.white),
+                    ),
                   ),
                 ),
               ),
@@ -1786,7 +1599,7 @@ class _AddStopSheetState extends State<_AddStopSheet> {
           Row(
             children: [
               Expanded(
-                child: Text(scope.t('trip_addAStop'), style: AppText.addSheetTitle),
+                child: Text(scope.t('trip_addAStop'), style: AppTextStyles.stadiumName),
               ),
               _SheetCloseButton(onTap: () => Navigator.of(context).pop()),
             ],
@@ -1808,7 +1621,7 @@ class _AddStopSheetState extends State<_AddStopSheet> {
           ),
           Padding(
             padding: const EdgeInsets.only(top: 14),
-            child: Text(scope.t('trip_categoryLabel'), style: AppText.fieldLabel),
+            child: Text(scope.t('trip_categoryLabel'), style: AppTextStyles.fieldLabel),
           ),
           const SizedBox(height: 6),
           Wrap(
@@ -1828,14 +1641,14 @@ class _AddStopSheetState extends State<_AddStopSheet> {
               padding: const EdgeInsets.only(top: 6),
               child: Text(
                 scope.t('trip_formError'),
-                style: AppText.formError,
+                style: AppTextStyles.plexArabic(fontSize: 11, color: AppColors.emberDeep),
               ),
             ),
           const SizedBox(height: 16),
           SizedBox(
             width: double.infinity,
             child: Material(
-              color: AppColors.ink,
+              color: AppColors.void_,
               borderRadius: BorderRadius.circular(AppRadii.sheetBtn),
               child: InkWell(
                 borderRadius: BorderRadius.circular(AppRadii.sheetBtn),
@@ -1843,7 +1656,7 @@ class _AddStopSheetState extends State<_AddStopSheet> {
                 child: Padding(
                   padding: const EdgeInsets.symmetric(vertical: 14),
                   child: Center(
-                    child: Text(scope.t('trip_addToPlan'), style: AppText.sheetBtn),
+                    child: Text(scope.t('trip_addToPlan'), style: AppTextStyles.btn(color: AppColors.white)),
                   ),
                 ),
               ),
@@ -1875,29 +1688,29 @@ class _FormField extends StatelessWidget {
         children: [
           Padding(
             padding: const EdgeInsets.only(bottom: 6),
-            child: Text(label, style: AppText.fieldLabel),
+            child: Text(label, style: AppTextStyles.fieldLabel),
           ),
           TextField(
             controller: controller,
-            style: AppText.fieldInput,
-            cursorColor: AppColors.teal,
+            style: AppTextStyles.fieldInput,
+            cursorColor: AppColors.ember,
             decoration: InputDecoration(
               hintText: hint,
-              hintStyle: AppText.fieldInput.copyWith(color: AppColors.muted),
+              hintStyle: AppTextStyles.fieldInput.copyWith(color: AppColors.inkSoft),
               filled: true,
-              fillColor: AppColors.bgSoft,
+              fillColor: AppColors.paper,
               contentPadding: const EdgeInsetsDirectional.symmetric(horizontal: 12, vertical: 11),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(AppRadii.field),
-                borderSide: const BorderSide(color: AppColors.line),
+                borderSide: const BorderSide(color: AppColors.stoneLine),
               ),
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(AppRadii.field),
-                borderSide: const BorderSide(color: AppColors.line),
+                borderSide: const BorderSide(color: AppColors.stoneLine),
               ),
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(AppRadii.field),
-                borderSide: const BorderSide(color: AppColors.teal, width: 2),
+                borderSide: const BorderSide(color: AppColors.ember, width: 2),
               ),
             ),
           ),
@@ -1921,7 +1734,7 @@ class _CategoryChip extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: active ? AppColors.ink : AppColors.bgSoft,
+      color: active ? AppColors.void_ : AppColors.paper,
       borderRadius: BorderRadius.circular(AppRadii.pill),
       child: InkWell(
         borderRadius: BorderRadius.circular(AppRadii.pill),
@@ -1931,10 +1744,15 @@ class _CategoryChip extends StatelessWidget {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(AppRadii.pill),
             border: Border.all(
-              color: active ? AppColors.ink : AppColors.line,
+              color: active ? AppColors.void_ : AppColors.stoneLine,
             ),
           ),
-          child: Text(label, style: active ? AppText.catOptActive : AppText.catOpt),
+          child: Text(
+            label,
+            style: active
+                ? AppTextStyles.plexArabic(fontSize: 12, fontWeight: FontWeight.w600, color: AppColors.white)
+                : AppTextStyles.plexArabic(fontSize: 12, fontWeight: FontWeight.w600, color: AppColors.inkSoft),
+          ),
         ),
       ),
     );

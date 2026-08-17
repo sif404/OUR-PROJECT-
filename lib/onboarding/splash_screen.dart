@@ -42,14 +42,13 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     final cs = Theme.of(context).colorScheme;
     final isLight = Theme.of(context).brightness == Brightness.light;
-
+    final tagColor = AppColors.getMuted(isLight);
+    final wordColor = AppColors.getTextP(isLight);
     return GestureDetector(
       onTap: _advance,
       child: Scaffold(
         backgroundColor: cs.surface,
-        body: Container(
-          width: double.infinity,
-          height: double.infinity,
+        body: DecoratedBox(
           decoration: BoxDecoration(
             gradient: RadialGradient(
               center: const Alignment(-0.4, -1),
@@ -58,39 +57,29 @@ class _SplashScreenState extends State<SplashScreen> {
               stops: const [0.0, 0.55, 1.0],
             ),
           ),
-          child: SafeArea(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 48),
-              child: SizedBox(
-                width: double.infinity,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    SizedBox(
-                      width: 210,
-                      child: Image.asset(
-                        'assets/images/axn_logo.png',
-                        fit: BoxFit.contain,
-                      ),
-                    ),
-                    Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        SizedBox(
-                          width: 160,
-                          child: Image.asset(
-                            'assets/images/axn_wordmark.png',
-                            fit: BoxFit.contain,
-                          ),
-                        ),
-                        const SizedBox(height: 32),
-                        const _PulsingDots(),
-                      ],
-                    ),
-                  ],
+          child: Center(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                SizedBox(
+                  width: 210,
+                  child: Image.asset('assets/images/axn_logo.png', fit: BoxFit.contain),
                 ),
-              ),
+                const SizedBox(height: 28),
+                RichText(
+                  text: TextSpan(
+                    style: AppTextStyles.splashWord.copyWith(color: wordColor),
+                    children: [
+                      const TextSpan(text: 'AX'),
+                      TextSpan(text: 'N', style: AppTextStyles.splashWord.copyWith(color: cs.primary)),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 8),
+                Text('AMRA EXCHANGE NEXUS', style: AppTextStyles.splashTag.copyWith(color: tagColor)),
+                const SizedBox(height: 64),
+                const _PulsingDots(),
+              ],
             ),
           ),
         ),
@@ -108,17 +97,13 @@ class _PulsingDots extends StatefulWidget {
   State<_PulsingDots> createState() => _PulsingDotsState();
 }
 
-class _PulsingDotsState extends State<_PulsingDots>
-    with SingleTickerProviderStateMixin {
+class _PulsingDotsState extends State<_PulsingDots> with SingleTickerProviderStateMixin {
   late final AnimationController _ctrl;
 
   @override
   void initState() {
     super.initState();
-    _ctrl = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 1100),
-    )..repeat();
+    _ctrl = AnimationController(vsync: this, duration: const Duration(milliseconds: 1100))..repeat();
   }
 
   @override
@@ -159,10 +144,7 @@ class _PulsingDotsState extends State<_PulsingDots>
                 child: Container(
                   width: 6,
                   height: 6,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: _colorFor(effT),
-                  ),
+                  decoration: BoxDecoration(shape: BoxShape.circle, color: _colorFor(effT)),
                 ),
               ),
             );

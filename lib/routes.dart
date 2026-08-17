@@ -23,6 +23,8 @@ class Routes {
   static const familyConsent = '/family-consent';
   static const createGroupFlow = '/create-group-flow';
   static const tripScreen = '/trip';
+  static const food = '/food';
+static const facilities = '/facilities';
   static const rewards = '/rewards';
   static const activeRoute = '/active-route';
   static const aiPlanner = '/ai-planner';

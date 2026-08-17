@@ -4,7 +4,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/services.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'firebase_options.dart';
 import 'l10n/app_localizations.dart';
 import 'models/app_scope.dart';
@@ -39,6 +38,8 @@ import 'screens/settings_screen.dart';
 import 'screens/trip_screen.dart';
 import 'screens/ai_planner_screen.dart' as ai_planner;
 import 'screens/find_my_car_screen.dart';
+import 'screens/food_screen.dart';
+import 'screens/facilities_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -196,6 +197,8 @@ class _AxnAppState extends ConsumerState<AxnApp> {
                     return CreateGroupFlowScreen(groups: groups);
                   },
                   Routes.tripScreen: (_) => const EveningPlanScreen(),
+                  Routes.food: (_) => const FoodScreen(),
+                  Routes.facilities: (_) => const FacilitiesScreen(),
                   Routes.rewards: (_) => const rewards.RewardsPage(),
                   Routes.aiPlanner: (_) => const ai_planner.AIPlannerScreen(),
                   Routes.findMyCar: (_) => const FindMyCarScreen(),
@@ -205,39 +208,22 @@ class _AxnAppState extends ConsumerState<AxnApp> {
                     final args = ModalRoute.of(context)?.settings.arguments;
                     final highlightCreateGroup = args is Map && args['highlightCreateGroup'] == true;
                     final scrollToMyGroups = args is Map && args['scrollToMyGroups'] == true;
-                    // NEW: fetch the signed-in user's real profile document
-                    // from Firestore (fullName / mobile) so the Profile
-                    // screen shows their actual name instead of the
-                    // placeholder default.
-                    final uid = FirebaseAuth.instance.currentUser?.uid;
-                    return FutureBuilder<DocumentSnapshot<Map<String, dynamic>>>(
-                      future: uid != null
-                          ? FirebaseFirestore.instance.collection('users').doc(uid).get()
-                          : null,
-                      builder: (context, snapshot) {
-                        final data = snapshot.data?.data();
-                        final fullName = (data?['fullName'] as String?)?.trim();
-                        final mobile = (data?['mobile'] as String?)?.trim();
-                        return AnimatedBuilder(
-                          animation: groups,
-                          builder: (context, _) => ProfileScreen(
-                            groups: groups.groups,
-                            username: (fullName != null && fullName.isNotEmpty) ? fullName : 'username',
-                            phoneNumber: (mobile != null && mobile.isNotEmpty) ? mobile : '+962 7 9012 3456',
-                            onBack: () => Navigator.of(context).maybePop(),
-                            onOpenSettings: () => Navigator.of(context).pushNamed(Routes.settings),
-                            onCreateGroup: () => Navigator.of(context).pushNamed(Routes.createGroupFlow),
-                            onLogout: () async {
-                              await FirebaseAuth.instance.signOut();
-                              if (context.mounted) {
-                                Navigator.of(context).pushNamedAndRemoveUntil(Routes.welcome, (_) => false);
-                              }
-                            },
-                            highlightCreateGroup: highlightCreateGroup,
-                            scrollToMyGroups: scrollToMyGroups,
-                          ),
-                        );
-                      },
+                    return AnimatedBuilder(
+                      animation: groups,
+                      builder: (context, _) => ProfileScreen(
+                        groups: groups.groups,
+                        onBack: () => Navigator.of(context).maybePop(),
+                        onOpenSettings: () => Navigator.of(context).pushNamed(Routes.settings),
+                        onCreateGroup: () => Navigator.of(context).pushNamed(Routes.createGroupFlow),
+                        onLogout: () async {
+                          await FirebaseAuth.instance.signOut();
+                          if (context.mounted) {
+                            Navigator.of(context).pushNamedAndRemoveUntil(Routes.login, (_) => false);
+                          }
+                        },
+                        highlightCreateGroup: highlightCreateGroup,
+                        scrollToMyGroups: scrollToMyGroups,
+                      ),
                     );
                   },
                   Routes.settings: (context) => SettingsScreen(
