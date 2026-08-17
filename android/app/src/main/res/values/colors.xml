@@ -4,4 +4,5 @@
     <color name="splash_background_dark">#121212</color>
     <color name="normal_background">#FFFFFF</color>
     <color name="normal_background_dark">#121212</color>
+	<color name="ic_launcher_background">#FFFFFF</color>
 </resources>
