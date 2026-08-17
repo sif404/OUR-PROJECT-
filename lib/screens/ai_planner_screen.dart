@@ -1,3 +1,5 @@
+import 'dart:convert';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -10,7 +12,6 @@ import '../l10n/app_localizations.dart';
 import '../models/app_scope.dart';
 import '../routes.dart';
 
-// Chat message representation
 class ChatMessage {
   final String sender; // 'user' or 'bot'
   final String text;
@@ -23,6 +24,36 @@ class ChatMessage {
   });
 }
 
+class ChatSession {
+  String id;
+  String title;
+  List<ChatMessage> messages;
+
+  ChatSession({required this.id, required this.title, required this.messages});
+  
+  Map<String, dynamic> toJson() => {
+    'id': id,
+    'title': title,
+    'messages': messages.map((m) => {
+      'text': m.text,
+      'sender': m.sender,
+      'time': m.time.toIso8601String(),
+    }).toList(),
+  };
+
+  factory ChatSession.fromJson(Map<String, dynamic> json) {
+    return ChatSession(
+      id: json['id'],
+      title: json['title'],
+      messages: (json['messages'] as List).map((msg) => ChatMessage(
+        text: msg['text'],
+        sender: msg['sender'],
+        time: DateTime.parse(msg['time']),
+      )).toList(),
+    );
+  }
+}
+
 class AIPlannerScreen extends ConsumerStatefulWidget {
   const AIPlannerScreen({super.key});
 
@@ -31,11 +62,18 @@ class AIPlannerScreen extends ConsumerStatefulWidget {
 }
 
 class _AIPlannerScreenState extends ConsumerState<AIPlannerScreen> {
-  final List<ChatMessage> _messages = [];
+  List<ChatMessage> _messages = [];
+  List<ChatSession> _sessions = [];
+  String _currentSessionId = '';
+  
   final TextEditingController _inputController = TextEditingController();
   final ScrollController _scrollController = ScrollController();
+  final FocusNode _focusNode = FocusNode();
   final Dio _dio = Dio();
   bool _isTyping = false;
+  
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+  bool _hasTypedText = false;
 
   List<String> _quickQueries(BuildContext context) {
     final scope = AppScope.of(context);
@@ -66,18 +104,125 @@ class _AIPlannerScreenState extends ConsumerState<AIPlannerScreen> {
   @override
   void initState() {
     super.initState();
-    // Add initial welcome message
-    _messages.add(ChatMessage(
-      sender: 'bot',
-      text: '', // Set in build step depending on state
-      time: DateTime.now(),
-    ));
+    _loadSavedChat();
+    
+    _inputController.addListener(() {
+      final isNotEmpty = _inputController.text.isNotEmpty;
+      if (_hasTypedText != isNotEmpty) {
+        setState(() {
+          _hasTypedText = isNotEmpty;
+        });
+      }
+    });
+  }
+
+  Future<void> _loadSavedChat() async {
+    final prefs = await SharedPreferences.getInstance();
+    final String? savedJson = prefs.getString('saved_ai_sessions');
+    
+    if (savedJson != null) {
+      try {
+        final List<dynamic> decodedList = jsonDecode(savedJson);
+        setState(() {
+          _sessions = decodedList.map((s) => ChatSession.fromJson(s)).toList();
+        });
+      } catch (e) {
+        debugPrint("Error loading chat history: $e");
+      }
+    }
+    
+    // Clean up abandoned empty sessions to avoid clutter
+    _sessions.removeWhere((s) => s.messages.length <= 1 && s.title == 'New Conversation');
+    _createNewSession();
+  }
+
+  void _deleteSession(ChatSession session) {
+    setState(() {
+      _sessions.removeWhere((s) => s.id == session.id);
+      if (_currentSessionId == session.id) {
+        if (_sessions.isNotEmpty) {
+          _currentSessionId = _sessions.first.id;
+          _messages = List.from(_sessions.first.messages);
+        } else {
+          _createNewSession();
+        }
+      }
+    });
+    _saveChatToDevice();
+  }
+
+  void _showRenameDialog(ChatSession session) {
+    final TextEditingController controller = TextEditingController(text: session.title);
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: const Text('Rename Conversation'),
+          content: TextField(
+            controller: controller,
+            decoration: const InputDecoration(hintText: 'Enter new title'),
+          ),
+          actions: [
+            TextButton(onPressed: () => Navigator.pop(context), child: const Text('Cancel')),
+            TextButton(
+              onPressed: () {
+                setState(() {
+                  session.title = controller.text.trim();
+                });
+                _saveChatToDevice();
+                Navigator.pop(context);
+              },
+              child: const Text('Save'),
+            ),
+          ],
+        );
+      }
+    );
+  }
+
+  void _createNewSession() {
+    setState(() {
+      _currentSessionId = DateTime.now().millisecondsSinceEpoch.toString();
+      _messages = [
+        ChatMessage(
+          sender: 'bot',
+          text: '', // Set in build step depending on state
+          time: DateTime.now(),
+        )
+      ];
+      _sessions.insert(0, ChatSession(
+        id: _currentSessionId,
+        title: 'New Conversation',
+        messages: List.from(_messages),
+      ));
+    });
+    _saveChatToDevice();
+  }
+
+  Future<void> _saveChatToDevice() async {
+    final sessionIndex = _sessions.indexWhere((s) => s.id == _currentSessionId);
+    if (sessionIndex != -1) {
+      _sessions[sessionIndex].messages = List.from(_messages);
+      
+      // Auto-generate title if it's still "New Conversation"
+      if (_sessions[sessionIndex].title == 'New Conversation' && _messages.length > 1) {
+        final firstUserMsg = _messages.firstWhere((m) => m.sender == 'user', orElse: () => _messages[1]);
+        String title = firstUserMsg.text;
+        if (title.length > 30) title = title.substring(0, 30) + '...';
+        _sessions[sessionIndex].title = title;
+      }
+    }
+
+    final prefs = await SharedPreferences.getInstance();
+    final encodedJson = jsonEncode(_sessions.map((s) => s.toJson()).toList());
+    await prefs.setString('saved_ai_sessions', encodedJson);
   }
 
   @override
   void dispose() {
     _inputController.dispose();
     _scrollController.dispose();
+    _focusNode.dispose();
     super.dispose();
   }
 
@@ -193,10 +338,16 @@ TONE & BEHAVIOR:
       _inputController.clear();
       _isTyping = true;
     });
+    _saveChatToDevice();
     _scrollToBottom();
 
     // Check if client-side Groq API key is configured
     final clientApiKey = ref.read(groqApiKeyProvider);
+    
+    String activeInstruction = _systemInstruction;    final weatherState = ref.read(weatherProvider).valueOrNull;
+    if (weatherState?.temperature != null && weatherState?.humidity != null) {
+      activeInstruction += '\n\nCURRENT REAL-TIME WEATHER OUTSIDE IN AMMAN:\n- Temperature out: ${weatherState!.temperature}°C\n- Humidity out: ${weatherState.humidity}%\n\n(Take this outdoor weather into consideration when suggesting activities to the user).';
+    }
 
     try {
       if (clientApiKey.isNotEmpty) {
@@ -204,9 +355,9 @@ TONE & BEHAVIOR:
         final response = await _dio.post(
           'https://api.groq.com/openai/v1/chat/completions',
           data: {
-            'model': 'llama-3.3-70b-versatile',
+            'model': 'allam-2-7b',
             'messages': [
-              {'role': 'system', 'content': _systemInstruction},
+              {'role': 'system', 'content': activeInstruction},
               ..._messages.map((m) {
                 return {
                   'role': m.sender == 'user' ? 'user' : 'assistant',
@@ -241,6 +392,7 @@ TONE & BEHAVIOR:
                   ));
                   _isTyping = false;
                 });
+                _saveChatToDevice();
                 _scrollToBottom();
                 return; // Direct client-side chat succeeded
               }
@@ -288,6 +440,7 @@ TONE & BEHAVIOR:
           ));
           _isTyping = false;
         });
+        _saveChatToDevice();
       } else {
         debugPrint("Server responded with non-200 status code: ${response.statusCode}");
         throw Exception("Server non-200 response (${response.statusCode})");
@@ -322,6 +475,7 @@ TONE & BEHAVIOR:
         ));
         _isTyping = false;
       });
+      _saveChatToDevice();
     }
     _scrollToBottom();
   }
@@ -349,6 +503,7 @@ TONE & BEHAVIOR:
         text: welcomeText,
         time: _messages[0].time,
       );
+      _saveChatToDevice();
     } else if (_messages.isNotEmpty && _messages[0].sender == 'bot' &&
                _messages[0].text == welcomeText) {
       // Dynamic welcome language sync without breaking user history
@@ -358,8 +513,83 @@ TONE & BEHAVIOR:
         time: _messages[0].time,
       );
     }
+    
+    final bool isKeyboardOpen = MediaQuery.of(context).viewInsets.bottom > 0;
 
     return Scaffold(
+      key: _scaffoldKey,
+      drawer: Directionality(
+        textDirection: isAr ? TextDirection.rtl : TextDirection.ltr,
+        child: Drawer(
+          backgroundColor: AppColors.getBg(isLight),
+          child: SafeArea(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(AppTokens.space16),
+                  child: Text(
+                    'Chat History',
+                    style: TextStyle(
+                      color: textP,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w900,
+                    ),
+                  ),
+                ),
+                Divider(color: border, height: 1),
+                Expanded(
+                  child: ListView.builder(
+                    padding: EdgeInsets.zero,
+                    itemCount: _sessions.length + 1,
+                    itemBuilder: (context, index) {
+                      if (index == 0) {
+                        return ListTile(
+                          leading: Icon(Icons.add_rounded, color: textP, size: 20),
+                          title: Text('New Conversation', style: TextStyle(color: textP, fontSize: 13, fontWeight: FontWeight.w600)),
+                          onTap: () {
+                            _createNewSession();
+                            Navigator.pop(context);
+                          },
+                        );
+                      }
+                      
+                      final session = _sessions[index - 1];
+                      final isSelected = session.id == _currentSessionId;
+                      
+                      return ListTile(
+                        leading: Icon(Icons.chat_bubble_outline_rounded, color: isSelected ? AppColors.primary : textP, size: 20),
+                        title: Text(session.title, style: TextStyle(color: isSelected ? AppColors.primary : textP, fontSize: 13, fontWeight: isSelected ? FontWeight.bold : FontWeight.normal)),
+                        onTap: () {
+                          setState(() {
+                            _currentSessionId = session.id;
+                            _messages = List.from(session.messages);
+                          });
+                          Navigator.pop(context);
+                        },
+                        trailing: PopupMenuButton<String>(
+                          icon: Icon(Icons.more_vert_rounded, color: textS, size: 16),
+                          onSelected: (value) {
+                            if (value == 'rename') {
+                              _showRenameDialog(session);
+                            } else if (value == 'delete') {
+                              _deleteSession(session);
+                            }
+                          },
+                          itemBuilder: (context) => [
+                            const PopupMenuItem(value: 'rename', child: Text('Rename')),
+                            const PopupMenuItem(value: 'delete', child: Text('Delete', style: TextStyle(color: Colors.red))),
+                          ],
+                        ),
+                      );
+                    },
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
       backgroundColor: AppColors.getBg(isLight),
       body: Directionality(
         textDirection: isAr ? TextDirection.rtl : TextDirection.ltr,
@@ -410,6 +640,28 @@ TONE & BEHAVIOR:
                     ),
                     child: Row(
                       children: [
+                        // Drawer Menu Icon (3 bars)
+                        GestureDetector(
+                          onTap: () {
+                            _scaffoldKey.currentState?.openDrawer();
+                          },
+                          child: Container(
+                            width: 38,
+                            height: 38,
+                            decoration: BoxDecoration(
+                              color: isLight ? Colors.black.withOpacity(0.04) : Colors.white.withOpacity(0.05),
+                              borderRadius: BorderRadius.circular(AppTokens.radiusSmall),
+                              border: Border.all(color: border),
+                            ),
+                            child: Icon(
+                              Icons.menu_rounded,
+                              color: textP,
+                              size: 18,
+                            ),
+                          ),
+                        ),
+                        const SizedBox(width: AppTokens.space12),
+
                         // Back Icon
                         GestureDetector(
                           onTap: () {
@@ -463,81 +715,11 @@ TONE & BEHAVIOR:
                           ),
                         ),
 
-                        // Decorative pulsing bot status badge
-                        Container(
-                          padding: const EdgeInsetsDirectional.symmetric(horizontal: 8, vertical: 4),
-                          decoration: BoxDecoration(
-                            color: isLight ? const Color(0xFF14E0C4).withOpacity(0.12) : const Color(0xFF14E0C4).withOpacity(0.08),
-                            borderRadius: BorderRadius.circular(20),
-                            border: Border.all(
-                              color: const Color(0xFF14E0C4).withOpacity(0.2),
-                            ),
-                          ),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Container(
-                                width: 6,
-                                height: 6,
-                                decoration: const BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  color: Color(0xFF14E0C4),
-                                ),
-                              ).animate(onPlay: (controller) => controller.repeat())
-                               .fadeIn(duration: 500.ms)
-                               .then()
-                               .fadeOut(duration: 500.ms),
-                              const SizedBox(width: 4),
-                              Text(
-                                scope.t('aiPlanner_online'),
-                                style: const TextStyle(
-                                  color: Color(0xFF14E0C4),
-                                  fontSize: 8,
-                                  fontWeight: FontWeight.w900,
-                                  letterSpacing: 0.5,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
+                        // Removed online badge per user request
+                        const SizedBox.shrink(),
                       ],
                     ),
                   ),
-
-                  // 2. OPTIONAL CONFIGURATION BANNER (if local & API Key is empty)
-                  if (clientApiKey.isEmpty && _isLocalHost()) ...[
-                    Container(
-                      padding: const EdgeInsetsDirectional.symmetric(horizontal: AppTokens.space16, vertical: 8),
-                      color: Colors.amber.withOpacity(0.12),
-                      child: Row(
-                        children: [
-                          const Icon(Icons.warning_amber_rounded, color: Colors.amber, size: 16),
-                          const SizedBox(width: 8),
-                          Expanded(
-                            child: Text(
-                              scope.t('aiPlanner_simulatedMode'),
-                              style: const TextStyle(fontSize: 10, fontWeight: FontWeight.bold, color: Colors.amber),
-                            ),
-                          ),
-                          const SizedBox(width: 8),
-                          TextButton(
-                            onPressed: () {
-                              Navigator.of(context).pushNamed(Routes.settings);
-                            },
-                            style: TextButton.styleFrom(
-                              padding: const EdgeInsetsDirectional.symmetric(horizontal: 8, vertical: 4),
-                              minimumSize: Size.zero,
-                              tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                            ),
-                            child: Text(
-                              scope.t('settings_title'),
-                              style: const TextStyle(fontSize: 10, fontWeight: FontWeight.bold, color: AppColors.primary),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
 
                   // 3. CHAT BUBBLES SCROLL FEED
                   Expanded(
@@ -674,8 +856,7 @@ TONE & BEHAVIOR:
                   ),
 
                   // 3. TYPING INDICATOR EFFECT
-                  if (_isTyping)
-                    Padding(
+                  _isTyping ? Padding(
                       padding: const EdgeInsetsDirectional.only(start: AppTokens.space16, end: AppTokens.space16, bottom: 12),
                       child: Align(
                         alignment: AlignmentDirectional.centerStart,
@@ -729,69 +910,70 @@ TONE & BEHAVIOR:
                           ],
                         ),
                       ),
-                    ),
+                    ) : const SizedBox.shrink(),
 
                   // 4. QUICK PRESET CHIPS
-                  Container(
-                    height: 42,
-                    margin: const EdgeInsets.only(bottom: AppTokens.space12),
-                    child: ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      padding: const EdgeInsetsDirectional.symmetric(horizontal: AppTokens.space16),
-                      itemCount: quickQueries.length,
-                      itemBuilder: (context, index) {
-                        final query = quickQueries[index];
-                        IconData icon = Icons.help_outline_rounded;
-                        if (index == 0) icon = Icons.groups_rounded;
-                        if (index == 1) icon = Icons.local_cafe_rounded;
-                        if (index == 2) icon = Icons.local_parking_rounded;
-                        if (index == 3) icon = Icons.wb_twilight_rounded;
-                        if (index == 4) icon = Icons.explore_rounded;
+                  (!isKeyboardOpen && !_hasTypedText) ?
+                    Container(
+                      height: 42,
+                      margin: const EdgeInsets.only(bottom: AppTokens.space12),
+                      child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        padding: const EdgeInsetsDirectional.symmetric(horizontal: AppTokens.space16),
+                        itemCount: quickQueries.length,
+                        itemBuilder: (context, index) {
+                          final query = quickQueries[index];
+                          IconData icon = Icons.help_outline_rounded;
+                          if (index == 0) icon = Icons.groups_rounded;
+                          if (index == 1) icon = Icons.local_cafe_rounded;
+                          if (index == 2) icon = Icons.local_parking_rounded;
+                          if (index == 3) icon = Icons.wb_twilight_rounded;
+                          if (index == 4) icon = Icons.explore_rounded;
 
-                        return Padding(
-                          padding: const EdgeInsetsDirectional.only(end: 8.0),
-                          child: InkWell(
-                            onTap: () => _sendMessage(query, lang),
-                            borderRadius: BorderRadius.circular(AppTokens.radiusMedium),
-                            child: Container(
-                              padding: const EdgeInsetsDirectional.symmetric(horizontal: 14, vertical: 8),
-                              decoration: BoxDecoration(
-                                color: isLight ? Colors.white : const Color(0xFF141B2E),
-                                borderRadius: BorderRadius.circular(AppTokens.radiusMedium),
-                                border: Border.all(color: border),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.black.withOpacity(0.03),
-                                    blurRadius: 4,
-                                    offset: const Offset(0, 1),
-                                  )
-                                ],
-                              ),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  Icon(
-                                    icon,
-                                    size: 14,
-                                    color: isLight ? const Color(0xFFB54D3F) : const Color(0xFF14E0C4),
-                                  ),
-                                  const SizedBox(width: 6),
-                                  Text(
-                                    query,
-                                    style: TextStyle(
-                                      color: textP,
-                                      fontSize: 10,
-                                      fontWeight: FontWeight.bold,
+                          return Padding(
+                            padding: const EdgeInsetsDirectional.only(end: 8.0),
+                            child: InkWell(
+                              onTap: () => _sendMessage(query, lang),
+                              borderRadius: BorderRadius.circular(AppTokens.radiusMedium),
+                              child: Container(
+                                padding: const EdgeInsetsDirectional.symmetric(horizontal: 14, vertical: 8),
+                                decoration: BoxDecoration(
+                                  color: isLight ? Colors.white : const Color(0xFF141B2E),
+                                  borderRadius: BorderRadius.circular(AppTokens.radiusMedium),
+                                  border: Border.all(color: border),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.black.withOpacity(0.03),
+                                      blurRadius: 4,
+                                      offset: const Offset(0, 1),
+                                    )
+                                  ],
+                                ),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Icon(
+                                      icon,
+                                      size: 14,
+                                      color: isLight ? const Color(0xFFB54D3F) : const Color(0xFF14E0C4),
                                     ),
-                                  ),
-                                ],
+                                    const SizedBox(width: 6),
+                                    Text(
+                                      query,
+                                      style: TextStyle(
+                                        color: textP,
+                                        fontSize: 10,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
-                          ),
-                        );
-                      },
-                    ),
-                  ),
+                          );
+                        },
+                      ),
+                    ) : const SizedBox.shrink(),
 
                   // 5. INPUT TEXT BAR
                   Container(
@@ -809,22 +991,23 @@ TONE & BEHAVIOR:
                       children: [
                         Expanded(
                           child: Container(
-                            height: 46,
+                            height: 60,
                             padding: const EdgeInsetsDirectional.symmetric(horizontal: 16),
                             decoration: BoxDecoration(
-                              color: isLight ? const Color(0xFFF3F4F6) : const Color(0xFF141B2E),
+                              color: Colors.transparent,
                               borderRadius: BorderRadius.circular(24),
                               border: Border.all(
-                                color: border,
+                                color: Colors.transparent,
                                 width: 0.8,
                               ),
                             ),
                             child: Center(
                               child: TextField(
+                                focusNode: _focusNode,
                                 controller: _inputController,
                                 style: TextStyle(
                                   color: textP,
-                                  fontSize: 12,
+                                  fontSize: 14,
                                   fontWeight: FontWeight.w500,
                                 ),
                                 decoration: InputDecoration(
@@ -838,7 +1021,10 @@ TONE & BEHAVIOR:
                                   isDense: true,
                                   contentPadding: EdgeInsets.zero,
                                 ),
-                                onSubmitted: (val) => _sendMessage(val, lang),
+                                onSubmitted: (val) {
+                                  _sendMessage(val, lang);
+                                  _focusNode.requestFocus(); // Keep focus when submitting
+                                },
                               ),
                             ),
                           ),
@@ -883,7 +1069,8 @@ TONE & BEHAVIOR:
                   ),
 
                   // Spacer offset for bottom navigation deck (when shown as nested shell item)
-                  const SizedBox(height: 80),
+                  (!isKeyboardOpen) ?
+                    const SizedBox(height: 80) : const SizedBox.shrink(),
                 ],
               ),
             ),

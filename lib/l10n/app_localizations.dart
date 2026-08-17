@@ -4363,6 +4363,318 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **' · locked'**
   String get rewards_lockedSuffix;
+
+  /// No description provided for @food_bizmodel_desc.
+  ///
+  /// In en, this message translates to:
+  /// **'Local food brands can reach visitors through curated placement, experiences, and future event-day offers — while AXN keeps the food journey inside the city experience.'**
+  String get food_bizmodel_desc;
+
+  /// No description provided for @food_bizmodel_label.
+  ///
+  /// In en, this message translates to:
+  /// **'FOOD PARTNER MODEL'**
+  String get food_bizmodel_label;
+
+  /// No description provided for @food_bizmodel_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Turn food into part of the city experience.'**
+  String get food_bizmodel_title;
+
+  /// No description provided for @food_brand_habibah_category.
+  ///
+  /// In en, this message translates to:
+  /// **'Sweets'**
+  String get food_brand_habibah_category;
+
+  /// No description provided for @food_brand_habibah_tag.
+  ///
+  /// In en, this message translates to:
+  /// **'Jordanian classic'**
+  String get food_brand_habibah_tag;
+
+  /// No description provided for @food_brand_mansafha_category.
+  ///
+  /// In en, this message translates to:
+  /// **'Jordanian'**
+  String get food_brand_mansafha_category;
+
+  /// No description provided for @food_brand_mansafha_tag.
+  ///
+  /// In en, this message translates to:
+  /// **'Mansaf experience'**
+  String get food_brand_mansafha_tag;
+
+  /// No description provided for @food_brand_qahwa_category.
+  ///
+  /// In en, this message translates to:
+  /// **'Coffee'**
+  String get food_brand_qahwa_category;
+
+  /// No description provided for @food_brand_qahwa_tag.
+  ///
+  /// In en, this message translates to:
+  /// **'Local coffee pick'**
+  String get food_brand_qahwa_tag;
+
+  /// No description provided for @food_cat_coffee.
+  ///
+  /// In en, this message translates to:
+  /// **'Coffee'**
+  String get food_cat_coffee;
+
+  /// No description provided for @food_cat_jordanian.
+  ///
+  /// In en, this message translates to:
+  /// **'Jordanian'**
+  String get food_cat_jordanian;
+
+  /// No description provided for @food_cat_quickBite.
+  ///
+  /// In en, this message translates to:
+  /// **'Quick bite'**
+  String get food_cat_quickBite;
+
+  /// No description provided for @food_cat_sweets.
+  ///
+  /// In en, this message translates to:
+  /// **'Sweets'**
+  String get food_cat_sweets;
+
+  /// No description provided for @food_chip_eventDiscovery.
+  ///
+  /// In en, this message translates to:
+  /// **'Event-day discovery'**
+  String get food_chip_eventDiscovery;
+
+  /// No description provided for @food_chip_futureOffers.
+  ///
+  /// In en, this message translates to:
+  /// **'Future offers'**
+  String get food_chip_futureOffers;
+
+  /// No description provided for @food_chip_partnerVisibility.
+  ///
+  /// In en, this message translates to:
+  /// **'Partner visibility'**
+  String get food_chip_partnerVisibility;
+
+  /// No description provided for @food_explore.
+  ///
+  /// In en, this message translates to:
+  /// **'Explore'**
+  String get food_explore;
+
+  /// No description provided for @food_eyebrow.
+  ///
+  /// In en, this message translates to:
+  /// **'FOOD EXPERIENCE'**
+  String get food_eyebrow;
+
+  /// No description provided for @food_hero_badge.
+  ///
+  /// In en, this message translates to:
+  /// **'LOCAL FLAVORS'**
+  String get food_hero_badge;
+
+  /// No description provided for @food_hero_desc.
+  ///
+  /// In en, this message translates to:
+  /// **'Quick stops, Jordanian flavors, and familiar local brands — built into the visit, not left outside it.'**
+  String get food_hero_desc;
+
+  /// No description provided for @food_hero_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Eat your way through the night.'**
+  String get food_hero_title;
+
+  /// No description provided for @food_pill_group.
+  ///
+  /// In en, this message translates to:
+  /// **'Group'**
+  String get food_pill_group;
+
+  /// No description provided for @food_pill_local.
+  ///
+  /// In en, this message translates to:
+  /// **'Local'**
+  String get food_pill_local;
+
+  /// No description provided for @food_pill_quick.
+  ///
+  /// In en, this message translates to:
+  /// **'Quick'**
+  String get food_pill_quick;
+
+  /// No description provided for @food_section_count.
+  ///
+  /// In en, this message translates to:
+  /// **'3 PICKS'**
+  String get food_section_count;
+
+  /// No description provided for @food_section_eyebrow.
+  ///
+  /// In en, this message translates to:
+  /// **'LOCAL PICKS'**
+  String get food_section_eyebrow;
+
+  /// No description provided for @food_section_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Jordanian flavors, made part of the journey.'**
+  String get food_section_title;
+
+  /// No description provided for @food_subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Discover food as part of the experience — from a quick coffee to a proper Jordanian bite.'**
+  String get food_subtitle;
+
+  /// No description provided for @food_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Good food,\nright along the way.'**
+  String get food_title;
+
+  /// No description provided for @facilities_care_desc.
+  ///
+  /// In en, this message translates to:
+  /// **'AXN brings essential support into the journey — not as a list of pins, but as part of how people experience the city.'**
+  String get facilities_care_desc;
+
+  /// No description provided for @facilities_care_label.
+  ///
+  /// In en, this message translates to:
+  /// **'CARE LAYER'**
+  String get facilities_care_label;
+
+  /// No description provided for @facilities_care_title.
+  ///
+  /// In en, this message translates to:
+  /// **'A better visit\nlooks after you.'**
+  String get facilities_care_title;
+
+  /// No description provided for @facilities_eyebrow.
+  ///
+  /// In en, this message translates to:
+  /// **'CARE / COMFORT'**
+  String get facilities_eyebrow;
+
+  /// No description provided for @facilities_health_body.
+  ///
+  /// In en, this message translates to:
+  /// **'Make health and first-aid support easy to discover when you or someone with you needs it.'**
+  String get facilities_health_body;
+
+  /// No description provided for @facilities_health_chip1.
+  ///
+  /// In en, this message translates to:
+  /// **'First aid'**
+  String get facilities_health_chip1;
+
+  /// No description provided for @facilities_health_chip2.
+  ///
+  /// In en, this message translates to:
+  /// **'Health support'**
+  String get facilities_health_chip2;
+
+  /// No description provided for @facilities_health_label.
+  ///
+  /// In en, this message translates to:
+  /// **'HEALTH SUPPORT'**
+  String get facilities_health_label;
+
+  /// No description provided for @facilities_health_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Help when it matters.'**
+  String get facilities_health_title;
+
+  /// No description provided for @facilities_note.
+  ///
+  /// In en, this message translates to:
+  /// **'The idea: AXN does not just tell visitors where a facility is — it helps them understand when and why it matters during their journey.'**
+  String get facilities_note;
+
+  /// No description provided for @facilities_prayer_body.
+  ///
+  /// In en, this message translates to:
+  /// **'Find a calm, respectful space for prayer without interrupting the flow of your visit.'**
+  String get facilities_prayer_body;
+
+  /// No description provided for @facilities_prayer_chip1.
+  ///
+  /// In en, this message translates to:
+  /// **'Quiet space'**
+  String get facilities_prayer_chip1;
+
+  /// No description provided for @facilities_prayer_chip2.
+  ///
+  /// In en, this message translates to:
+  /// **'Prayer support'**
+  String get facilities_prayer_chip2;
+
+  /// No description provided for @facilities_prayer_label.
+  ///
+  /// In en, this message translates to:
+  /// **'PRAYER SPACES'**
+  String get facilities_prayer_label;
+
+  /// No description provided for @facilities_prayer_title.
+  ///
+  /// In en, this message translates to:
+  /// **'A moment to pause.'**
+  String get facilities_prayer_title;
+
+  /// No description provided for @facilities_quick_health_subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Help when needed'**
+  String get facilities_quick_health_subtitle;
+
+  /// No description provided for @facilities_quick_health_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Health'**
+  String get facilities_quick_health_title;
+
+  /// No description provided for @facilities_quick_prayer_subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Quiet moments'**
+  String get facilities_quick_prayer_subtitle;
+
+  /// No description provided for @facilities_quick_prayer_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Prayer'**
+  String get facilities_quick_prayer_title;
+
+  /// No description provided for @facilities_section_label.
+  ///
+  /// In en, this message translates to:
+  /// **'ESSENTIAL SPACES'**
+  String get facilities_section_label;
+
+  /// No description provided for @facilities_section_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Support beyond the destination'**
+  String get facilities_section_title;
+
+  /// No description provided for @facilities_subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Quiet spaces, prayer, and health support — built into the experience so you can focus on the moment.'**
+  String get facilities_subtitle;
+
+  /// No description provided for @facilities_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Everything you need,\nwhen you need a pause.'**
+  String get facilities_title;
 }
 
 class _AppLocalizationsDelegate
@@ -4396,57 +4708,4 @@ AppLocalizations lookupAppLocalizations(Locale locale) {
       'an issue with the localizations generation tool. Please file an issue '
       'on GitHub with a reproducible sample app and the gen-l10n configuration '
       'that was used.');
-
-  String get food_bizmodel_desc;
-  String get food_bizmodel_label;
-  String get food_bizmodel_title;
-  String get food_brand_habibah_category;
-  String get food_brand_habibah_tag;
-  String get food_brand_mansafha_category;
-  String get food_brand_mansafha_tag;
-  String get food_brand_qahwa_category;
-  String get food_brand_qahwa_tag;
-  String get food_cat_coffee;
-  String get food_cat_jordanian;
-  String get food_cat_quickBite;
-  String get food_cat_sweets;
-  String get food_chip_eventDiscovery;
-  String get food_chip_futureOffers;
-  String get food_chip_partnerVisibility;
-  String get food_explore;
-  String get food_eyebrow;
-  String get food_hero_badge;
-  String get food_hero_desc;
-  String get food_hero_title;
-  String get food_pill_group;
-  String get food_pill_local;
-  String get food_pill_quick;
-  String get food_section_count;
-  String get food_section_eyebrow;
-  String get food_section_title;
-  String get food_subtitle;
-  String get food_title;
-  String get facilities_care_desc;
-  String get facilities_care_label;
-  String get facilities_care_title;
-  String get facilities_eyebrow;
-  String get facilities_health_body;
-  String get facilities_health_chip1;
-  String get facilities_health_chip2;
-  String get facilities_health_label;
-  String get facilities_health_title;
-  String get facilities_note;
-  String get facilities_prayer_body;
-  String get facilities_prayer_chip1;
-  String get facilities_prayer_chip2;
-  String get facilities_prayer_label;
-  String get facilities_prayer_title;
-  String get facilities_quick_health_subtitle;
-  String get facilities_quick_health_title;
-  String get facilities_quick_prayer_subtitle;
-  String get facilities_quick_prayer_title;
-  String get facilities_section_label;
-  String get facilities_section_title;
-  String get facilities_subtitle;
-  String get facilities_title;
 }

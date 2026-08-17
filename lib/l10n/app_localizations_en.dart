@@ -2316,160 +2316,170 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get rewards_lockedSuffix => ' · locked';
-  @override
-  String get facilities_care_desc => "AXN brings essential support into the journey — not as a list of pins, but as part of how people experience the city.";
 
   @override
-  String get facilities_care_label => "CARE LAYER";
+  String get food_bizmodel_desc =>
+      'Local food brands can reach visitors through curated placement, experiences, and future event-day offers — while AXN keeps the food journey inside the city experience.';
 
   @override
-  String get facilities_care_title => "A better visit\nlooks after you.";
+  String get food_bizmodel_label => 'FOOD PARTNER MODEL';
 
   @override
-  String get facilities_eyebrow => "CARE / COMFORT";
+  String get food_bizmodel_title =>
+      'Turn food into part of the city experience.';
 
   @override
-  String get facilities_health_body => "Make health and first-aid support easy to discover when you or someone with you needs it.";
+  String get food_brand_habibah_category => 'Sweets';
 
   @override
-  String get facilities_health_chip1 => "First aid";
+  String get food_brand_habibah_tag => 'Jordanian classic';
 
   @override
-  String get facilities_health_chip2 => "Health support";
+  String get food_brand_mansafha_category => 'Jordanian';
 
   @override
-  String get facilities_health_label => "HEALTH SUPPORT";
+  String get food_brand_mansafha_tag => 'Mansaf experience';
 
   @override
-  String get facilities_health_title => "Help when it matters.";
+  String get food_brand_qahwa_category => 'Coffee';
 
   @override
-  String get facilities_note => "The idea: AXN does not just tell visitors where a facility is — it helps them understand when and why it matters during their journey.";
+  String get food_brand_qahwa_tag => 'Local coffee pick';
 
   @override
-  String get facilities_prayer_body => "Find a calm, respectful space for prayer without interrupting the flow of your visit.";
+  String get food_cat_coffee => 'Coffee';
 
   @override
-  String get facilities_prayer_chip1 => "Quiet space";
+  String get food_cat_jordanian => 'Jordanian';
 
   @override
-  String get facilities_prayer_chip2 => "Prayer support";
+  String get food_cat_quickBite => 'Quick bite';
 
   @override
-  String get facilities_prayer_label => "PRAYER SPACES";
+  String get food_cat_sweets => 'Sweets';
 
   @override
-  String get facilities_prayer_title => "A moment to pause.";
+  String get food_chip_eventDiscovery => 'Event-day discovery';
 
   @override
-  String get facilities_quick_health_subtitle => "Help when needed";
+  String get food_chip_futureOffers => 'Future offers';
 
   @override
-  String get facilities_quick_health_title => "Health";
+  String get food_chip_partnerVisibility => 'Partner visibility';
 
   @override
-  String get facilities_quick_prayer_subtitle => "Quiet moments";
+  String get food_explore => 'Explore';
 
   @override
-  String get facilities_quick_prayer_title => "Prayer";
+  String get food_eyebrow => 'FOOD EXPERIENCE';
 
   @override
-  String get facilities_section_label => "ESSENTIAL SPACES";
+  String get food_hero_badge => 'LOCAL FLAVORS';
 
   @override
-  String get facilities_section_title => "Support beyond the destination";
+  String get food_hero_desc =>
+      'Quick stops, Jordanian flavors, and familiar local brands — built into the visit, not left outside it.';
 
   @override
-  String get facilities_subtitle => "Quiet spaces, prayer, and health support — built into the experience so you can focus on the moment.";
+  String get food_hero_title => 'Eat your way through the night.';
 
   @override
-  String get facilities_title => "Everything you need,\nwhen you need a pause.";
+  String get food_pill_group => 'Group';
 
   @override
-  String get food_bizmodel_desc => "Local food brands can reach visitors through curated placement, experiences, and future event-day offers — while AXN keeps the food journey inside the city experience.";
+  String get food_pill_local => 'Local';
 
   @override
-  String get food_bizmodel_label => "FOOD PARTNER MODEL";
+  String get food_pill_quick => 'Quick';
 
   @override
-  String get food_bizmodel_title => "Turn food into part of the city experience.";
+  String get food_section_count => '3 PICKS';
 
   @override
-  String get food_brand_habibah_category => "Sweets";
+  String get food_section_eyebrow => 'LOCAL PICKS';
 
   @override
-  String get food_brand_habibah_tag => "Jordanian classic";
+  String get food_section_title =>
+      'Jordanian flavors, made part of the journey.';
 
   @override
-  String get food_brand_mansafha_category => "Jordanian";
+  String get food_subtitle =>
+      'Discover food as part of the experience — from a quick coffee to a proper Jordanian bite.';
 
   @override
-  String get food_brand_mansafha_tag => "Mansaf experience";
+  String get food_title => 'Good food,\nright along the way.';
 
   @override
-  String get food_brand_qahwa_category => "Coffee";
+  String get facilities_care_desc =>
+      'AXN brings essential support into the journey — not as a list of pins, but as part of how people experience the city.';
 
   @override
-  String get food_brand_qahwa_tag => "Local coffee pick";
+  String get facilities_care_label => 'CARE LAYER';
 
   @override
-  String get food_cat_coffee => "Coffee";
+  String get facilities_care_title => 'A better visit\nlooks after you.';
 
   @override
-  String get food_cat_jordanian => "Jordanian";
+  String get facilities_eyebrow => 'CARE / COMFORT';
 
   @override
-  String get food_cat_quickBite => "Quick bite";
+  String get facilities_health_body =>
+      'Make health and first-aid support easy to discover when you or someone with you needs it.';
 
   @override
-  String get food_cat_sweets => "Sweets";
+  String get facilities_health_chip1 => 'First aid';
 
   @override
-  String get food_chip_eventDiscovery => "Event-day discovery";
+  String get facilities_health_chip2 => 'Health support';
 
   @override
-  String get food_chip_futureOffers => "Future offers";
+  String get facilities_health_label => 'HEALTH SUPPORT';
 
   @override
-  String get food_chip_partnerVisibility => "Partner visibility";
+  String get facilities_health_title => 'Help when it matters.';
 
   @override
-  String get food_explore => "Explore";
+  String get facilities_note =>
+      'The idea: AXN does not just tell visitors where a facility is — it helps them understand when and why it matters during their journey.';
 
   @override
-  String get food_eyebrow => "FOOD EXPERIENCE";
+  String get facilities_prayer_body =>
+      'Find a calm, respectful space for prayer without interrupting the flow of your visit.';
 
   @override
-  String get food_hero_badge => "LOCAL FLAVORS";
+  String get facilities_prayer_chip1 => 'Quiet space';
 
   @override
-  String get food_hero_desc => "Quick stops, Jordanian flavors, and familiar local brands — built into the visit, not left outside it.";
+  String get facilities_prayer_chip2 => 'Prayer support';
 
   @override
-  String get food_hero_title => "Eat your way through the night.";
+  String get facilities_prayer_label => 'PRAYER SPACES';
 
   @override
-  String get food_pill_group => "Group";
+  String get facilities_prayer_title => 'A moment to pause.';
 
   @override
-  String get food_pill_local => "Local";
+  String get facilities_quick_health_subtitle => 'Help when needed';
 
   @override
-  String get food_pill_quick => "Quick";
+  String get facilities_quick_health_title => 'Health';
 
   @override
-  String get food_section_count => "3 PICKS";
+  String get facilities_quick_prayer_subtitle => 'Quiet moments';
 
   @override
-  String get food_section_eyebrow => "LOCAL PICKS";
+  String get facilities_quick_prayer_title => 'Prayer';
 
   @override
-  String get food_section_title => "Jordanian flavors, made part of the journey.";
+  String get facilities_section_label => 'ESSENTIAL SPACES';
 
   @override
-  String get food_subtitle => "Discover food as part of the experience — from a quick coffee to a proper Jordanian bite.";
+  String get facilities_section_title => 'Support beyond the destination';
 
   @override
-  String get food_title => "Good food,\nright along the way.";
+  String get facilities_subtitle =>
+      'Quiet spaces, prayer, and health support — built into the experience so you can focus on the moment.';
 
+  @override
+  String get facilities_title => 'Everything you need,\nwhen you need a pause.';
 }

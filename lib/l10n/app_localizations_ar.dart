@@ -2307,158 +2307,166 @@ class AppLocalizationsAr extends AppLocalizations {
   String get rewards_lockedSuffix => ' · مقفل';
 
   @override
-  String get food_bizmodel_desc => "تستطيع العلامات الغذائية المحلية الوصول إلى الزوار من خلال الظهور المنظّم والتجارب والعروض المستقبلية في أيام الفعاليات، مع إبقاء رحلة الطعام جزءًا من تجربة المدينة.";
+  String get food_bizmodel_desc =>
+      'تستطيع العلامات الغذائية المحلية الوصول إلى الزوار من خلال الظهور المنظّم والتجارب والعروض المستقبلية في أيام الفعاليات، مع إبقاء رحلة الطعام جزءًا من تجربة المدينة.';
 
   @override
-  String get food_bizmodel_label => "نموذج شركاء الطعام";
+  String get food_bizmodel_label => 'نموذج شركاء الطعام';
 
   @override
-  String get food_bizmodel_title => "حوّل الطعام إلى جزء من تجربة المدينة.";
+  String get food_bizmodel_title => 'حوّل الطعام إلى جزء من تجربة المدينة.';
 
   @override
-  String get food_brand_habibah_category => "حلويات";
+  String get food_brand_habibah_category => 'حلويات';
 
   @override
-  String get food_brand_habibah_tag => "كلاسيكية أردنية";
+  String get food_brand_habibah_tag => 'كلاسيكية أردنية';
 
   @override
-  String get food_brand_mansafha_category => "أردني";
+  String get food_brand_mansafha_category => 'أردني';
 
   @override
-  String get food_brand_mansafha_tag => "تجربة منسف";
+  String get food_brand_mansafha_tag => 'تجربة منسف';
 
   @override
-  String get food_brand_qahwa_category => "قهوة";
+  String get food_brand_qahwa_category => 'قهوة';
 
   @override
-  String get food_brand_qahwa_tag => "خيار قهوة محلي";
+  String get food_brand_qahwa_tag => 'خيار قهوة محلي';
 
   @override
-  String get food_cat_coffee => "قهوة";
+  String get food_cat_coffee => 'قهوة';
 
   @override
-  String get food_cat_jordanian => "أردني";
+  String get food_cat_jordanian => 'أردني';
 
   @override
-  String get food_cat_quickBite => "وجبة سريعة";
+  String get food_cat_quickBite => 'وجبة سريعة';
 
   @override
-  String get food_cat_sweets => "حلويات";
+  String get food_cat_sweets => 'حلويات';
 
   @override
-  String get food_chip_eventDiscovery => "اكتشاف يوم الفعالية";
+  String get food_chip_eventDiscovery => 'اكتشاف يوم الفعالية';
 
   @override
-  String get food_chip_futureOffers => "عروض مستقبلية";
+  String get food_chip_futureOffers => 'عروض مستقبلية';
 
   @override
-  String get food_chip_partnerVisibility => "ظهور الشركاء";
+  String get food_chip_partnerVisibility => 'ظهور الشركاء';
 
   @override
-  String get food_explore => "استكشف";
+  String get food_explore => 'استكشف';
 
   @override
-  String get food_eyebrow => "تجربة الطعام";
+  String get food_eyebrow => 'تجربة الطعام';
 
   @override
-  String get food_hero_badge => "نكهات محلية";
+  String get food_hero_badge => 'نكهات محلية';
 
   @override
-  String get food_hero_desc => "توقفات سريعة، نكهات أردنية، وعلامات محلية مألوفة — جزء من الزيارة وليست شيئًا خارجها.";
+  String get food_hero_desc =>
+      'توقفات سريعة، نكهات أردنية، وعلامات محلية مألوفة — جزء من الزيارة وليست شيئًا خارجها.';
 
   @override
-  String get food_hero_title => "خلّي طعم الزيارة يكمل الليلة.";
+  String get food_hero_title => 'خلّي طعم الزيارة يكمل الليلة.';
 
   @override
-  String get food_pill_group => "مجموعة";
+  String get food_pill_group => 'مجموعة';
 
   @override
-  String get food_pill_local => "محلي";
+  String get food_pill_local => 'محلي';
 
   @override
-  String get food_pill_quick => "سريع";
+  String get food_pill_quick => 'سريع';
 
   @override
-  String get food_section_count => "3 اختيارات";
+  String get food_section_count => '3 اختيارات';
 
   @override
-  String get food_section_eyebrow => "اختيارات محلية";
+  String get food_section_eyebrow => 'اختيارات محلية';
 
   @override
-  String get food_section_title => "نكهات أردنية تصبح جزءًا من الرحلة.";
+  String get food_section_title => 'نكهات أردنية تصبح جزءًا من الرحلة.';
 
   @override
-  String get food_subtitle => "اكتشف الطعام كجزء من التجربة — من قهوة سريعة إلى وجبة أردنية أصيلة.";
+  String get food_subtitle =>
+      'اكتشف الطعام كجزء من التجربة — من قهوة سريعة إلى وجبة أردنية أصيلة.';
 
   @override
-  String get food_title => "أكل طيب،\nبطريقك.";
+  String get food_title => 'أكل طيب،\nبطريقك.';
 
   @override
-  String get facilities_care_desc => "تضع AXN الدعم الأساسي داخل الرحلة — ليس كقائمة مواقع، بل كجزء من طريقة عيش الزائر لتجربة المدينة.";
+  String get facilities_care_desc =>
+      'تضع AXN الدعم الأساسي داخل الرحلة — ليس كقائمة مواقع، بل كجزء من طريقة عيش الزائر لتجربة المدينة.';
 
   @override
-  String get facilities_care_label => "طبقة العناية";
+  String get facilities_care_label => 'طبقة العناية';
 
   @override
-  String get facilities_care_title => "زيارة أفضل\nتهتم بك.";
+  String get facilities_care_title => 'زيارة أفضل\nتهتم بك.';
 
   @override
-  String get facilities_eyebrow => "راحة / عناية";
+  String get facilities_eyebrow => 'راحة / عناية';
 
   @override
-  String get facilities_health_body => "اجعل الوصول إلى الدعم الصحي والإسعافات الأولية سهلًا عندما تحتاجه أنت أو أحد مرافقيك.";
+  String get facilities_health_body =>
+      'اجعل الوصول إلى الدعم الصحي والإسعافات الأولية سهلًا عندما تحتاجه أنت أو أحد مرافقيك.';
 
   @override
-  String get facilities_health_chip1 => "إسعافات أولية";
+  String get facilities_health_chip1 => 'إسعافات أولية';
 
   @override
-  String get facilities_health_chip2 => "دعم صحي";
+  String get facilities_health_chip2 => 'دعم صحي';
 
   @override
-  String get facilities_health_label => "دعم صحي";
+  String get facilities_health_label => 'دعم صحي';
 
   @override
-  String get facilities_health_title => "مساعدة عندما تحتاجها.";
+  String get facilities_health_title => 'مساعدة عندما تحتاجها.';
 
   @override
-  String get facilities_note => "الفكرة: لا تخبر AXN الزائر فقط أين توجد المنشأة، بل تساعده على فهم متى ولماذا يحتاجها خلال رحلته.";
+  String get facilities_note =>
+      'الفكرة: لا تخبر AXN الزائر فقط أين توجد المنشأة، بل تساعده على فهم متى ولماذا يحتاجها خلال رحلته.';
 
   @override
-  String get facilities_prayer_body => "اعثر على مساحة هادئة ومحترمة للصلاة دون أن تنقطع سلاسة زيارتك.";
+  String get facilities_prayer_body =>
+      'اعثر على مساحة هادئة ومحترمة للصلاة دون أن تنقطع سلاسة زيارتك.';
 
   @override
-  String get facilities_prayer_chip1 => "مساحة هادئة";
+  String get facilities_prayer_chip1 => 'مساحة هادئة';
 
   @override
-  String get facilities_prayer_chip2 => "دعم للصلاة";
+  String get facilities_prayer_chip2 => 'دعم للصلاة';
 
   @override
-  String get facilities_prayer_label => "مساحات للصلاة";
+  String get facilities_prayer_label => 'مساحات للصلاة';
 
   @override
-  String get facilities_prayer_title => "لحظة للتوقف.";
+  String get facilities_prayer_title => 'لحظة للتوقف.';
 
   @override
-  String get facilities_quick_health_subtitle => "مساعدة عند الحاجة";
+  String get facilities_quick_health_subtitle => 'مساعدة عند الحاجة';
 
   @override
-  String get facilities_quick_health_title => "الصحة";
+  String get facilities_quick_health_title => 'الصحة';
 
   @override
-  String get facilities_quick_prayer_subtitle => "لحظات هادئة";
+  String get facilities_quick_prayer_subtitle => 'لحظات هادئة';
 
   @override
-  String get facilities_quick_prayer_title => "الصلاة";
+  String get facilities_quick_prayer_title => 'الصلاة';
 
   @override
-  String get facilities_section_label => "مساحات أساسية";
+  String get facilities_section_label => 'مساحات أساسية';
 
   @override
-  String get facilities_section_title => "دعم يتجاوز الوجهة";
+  String get facilities_section_title => 'دعم يتجاوز الوجهة';
 
   @override
-  String get facilities_subtitle => "مساحات هادئة، وصلاة، ودعم صحي — مدمجة في التجربة لتبقى مركزًا على اللحظة.";
+  String get facilities_subtitle =>
+      'مساحات هادئة، وصلاة، ودعم صحي — مدمجة في التجربة لتبقى مركزًا على اللحظة.';
 
   @override
-  String get facilities_title => "كل ما تحتاجه،\nعندما تحتاج إلى استراحة.";
+  String get facilities_title => 'كل ما تحتاجه،\nعندما تحتاج إلى استراحة.';
 }
