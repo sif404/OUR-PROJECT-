@@ -65,6 +65,8 @@ class FoodScreen extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          _backButton(context),
+          const SizedBox(width: 12),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -725,6 +727,44 @@ class FoodScreen extends StatelessWidget {
         icon,
         size: 17,
         color: color,
+      ),
+    );
+  }
+
+  // ─────────────────────────────────────────────
+  // ROUND BUTTON
+  // ─────────────────────────────────────────────
+
+  // ─────────────────────────────────────────────
+  // BACK BUTTON
+  // ─────────────────────────────────────────────
+
+  Widget _backButton(BuildContext context) {
+    return Material(
+      color: AppColors.cardBgOf(context),
+      borderRadius: BorderRadius.circular(14),
+      child: InkWell(
+        onTap: () {
+          Navigator.of(context).maybePop();
+        },
+        borderRadius: BorderRadius.circular(14),
+        child: Container(
+          width: 42,
+          height: 42,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(14),
+            border: Border.all(
+              color: AppColors.stoneLineOf(context),
+            ),
+          ),
+          child: Icon(
+            AppScope.of(context).isArabic
+                ? Icons.arrow_forward_rounded
+                : Icons.arrow_back_rounded,
+            size: 18,
+            color: AppColors.voidOf(context),
+          ),
+        ),
       ),
     );
   }

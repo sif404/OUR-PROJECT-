@@ -43,11 +43,17 @@ class FacilitiesScreen extends StatelessWidget {
     final t = AppScope.of(context).t;
     return Padding(
       padding: const EdgeInsets.fromLTRB(20, 18, 20, 12),
-      child: Column(
+      child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            t('facilities_eyebrow'),
+          _backButton(context),
+          const SizedBox(width: 12),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  t('facilities_eyebrow'),
             style: AppTextStyles.eyebrow,
           ),
           const SizedBox(height: 6),
@@ -58,14 +64,49 @@ class FacilitiesScreen extends StatelessWidget {
             ).copyWith(fontSize: 24, height: 1.22),
           ),
           const SizedBox(height: 6),
-          Text(
-            t('facilities_subtitle'),
-            style: AppTextStyles.hSub.copyWith(
-              color: AppColors.inkSoft,
-              fontSize: 13,
+                Text(
+                  t('facilities_subtitle'),
+                  style: AppTextStyles.hSub.copyWith(
+                    color: AppColors.inkSoft,
+                    fontSize: 13,
+                  ),
+                ),
+              ],
             ),
           ),
         ],
+      ),
+    );
+  }
+
+  Widget _backButton(BuildContext context) {
+    final isAr = AppScope.of(context).isArabic;
+
+    return Material(
+      color: AppColors.cardBgOf(context),
+      borderRadius: BorderRadius.circular(14),
+      child: InkWell(
+        onTap: () {
+          Navigator.of(context).maybePop();
+        },
+        borderRadius: BorderRadius.circular(14),
+        child: Container(
+          width: 42,
+          height: 42,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(14),
+            border: Border.all(
+              color: AppColors.stoneLineOf(context),
+            ),
+          ),
+          child: Icon(
+            isAr
+                ? Icons.arrow_forward_rounded
+                : Icons.arrow_back_rounded,
+            size: 18,
+            color: AppColors.voidOf(context),
+          ),
+        ),
       ),
     );
   }
