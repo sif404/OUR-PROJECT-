@@ -42,11 +42,14 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     final cs = Theme.of(context).colorScheme;
     final isLight = Theme.of(context).brightness == Brightness.light;
+
     return GestureDetector(
       onTap: _advance,
       child: Scaffold(
         backgroundColor: cs.surface,
-        body: DecoratedBox(
+        body: Container(
+          width: double.infinity,
+          height: double.infinity,
           decoration: BoxDecoration(
             gradient: RadialGradient(
               center: const Alignment(-0.4, -1),
@@ -55,34 +58,38 @@ class _SplashScreenState extends State<SplashScreen> {
               stops: const [0.0, 0.55, 1.0],
             ),
           ),
-          // Logo pinned to the top (centered horizontally), wordmark image +
-          // dots pinned to the bottom.
           child: SafeArea(
             child: Padding(
               padding: const EdgeInsets.symmetric(vertical: 48),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  SizedBox(
-                    width: 210,
-                    child: Image.asset('assets/images/axn_logo.png', fit: BoxFit.contain),
-                  ),
-                  Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      // NEW: wordmark + tagline now comes from the designed
-                      // image (axn_wordmark.png) instead of RichText/Text,
-                      // so it matches the AXN/AMRA EXCHANGE NEXUS/Arabic
-                      // tagline lockup exactly.
-                      SizedBox(
-                        width: 160,
-                        child: Image.asset('assets/images/axn_wordmark.png', fit: BoxFit.contain),
+              child: SizedBox(
+                width: double.infinity,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    SizedBox(
+                      width: 210,
+                      child: Image.asset(
+                        'assets/images/axn_logo.png',
+                        fit: BoxFit.contain,
                       ),
-                      const SizedBox(height: 32),
-                      const _PulsingDots(),
-                    ],
-                  ),
-                ],
+                    ),
+                    Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        SizedBox(
+                          width: 160,
+                          child: Image.asset(
+                            'assets/images/axn_wordmark.png',
+                            fit: BoxFit.contain,
+                          ),
+                        ),
+                        const SizedBox(height: 32),
+                        const _PulsingDots(),
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
@@ -101,13 +108,17 @@ class _PulsingDots extends StatefulWidget {
   State<_PulsingDots> createState() => _PulsingDotsState();
 }
 
-class _PulsingDotsState extends State<_PulsingDots> with SingleTickerProviderStateMixin {
+class _PulsingDotsState extends State<_PulsingDots>
+    with SingleTickerProviderStateMixin {
   late final AnimationController _ctrl;
 
   @override
   void initState() {
     super.initState();
-    _ctrl = AnimationController(vsync: this, duration: const Duration(milliseconds: 1100))..repeat();
+    _ctrl = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 1100),
+    )..repeat();
   }
 
   @override
@@ -148,7 +159,10 @@ class _PulsingDotsState extends State<_PulsingDots> with SingleTickerProviderSta
                 child: Container(
                   width: 6,
                   height: 6,
-                  decoration: BoxDecoration(shape: BoxShape.circle, color: _colorFor(effT)),
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: _colorFor(effT),
+                  ),
                 ),
               ),
             );

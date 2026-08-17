@@ -421,7 +421,10 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
       bodyChildren: [
         Eyebrow(text: scope.t('caEyebrow')),
         Text(scope.t('caTitle'), style: AppTextStyles.hTitle(color: AppColors.voidOf(context))),
-        Padding(padding: const EdgeInsets.only(top: 6, bottom: 22), child: Text(scope.t('caSub'), style: AppTextStyles.hSub.copyWith(color: AppColors.inkSoftOf(context)))),
+        Padding(
+          padding: const EdgeInsets.only(top: 6, bottom: 22),
+          child: Text(scope.t('caSub'), style: AppTextStyles.hSub.copyWith(color: AppColors.inkSoftOf(context))),
+        ),
         AppField(
           label: scope.t('lblFullName'),
           required: true,
@@ -526,6 +529,28 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
               : null,
           onTap: _isLoading ? null : _submit,
           enabled: !_isLoading,
+        ),
+        const SizedBox(height: 16),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              _msg(scope, en: 'Already have an account? ', ar: 'لديك حساب بالفعل؟ '),
+              style: AppTextStyles.fieldLabel.copyWith(
+                color: AppColors.inkSoftOf(context),
+              ),
+            ),
+            GestureDetector(
+              onTap: () => goTo(Routes.login),
+              child: Text(
+                _msg(scope, en: 'Log in', ar: 'تسجيل الدخول'),
+                style: AppTextStyles.fieldLabel.copyWith(
+                  color: Theme.of(context).colorScheme.primary,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+          ],
         ),
       ],
     );
