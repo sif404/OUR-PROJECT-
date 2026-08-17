@@ -1,0 +1,21 @@
+{
+  "name": "axn-smart-city-server",
+  "version": "1.0.0",
+  "description": "AXN Smart City AI Co-Pilot backend server — proxies AI requests to Groq or Gemini",
+  "main": "server.ts",
+  "scripts": {
+    "start": "tsx server.ts",
+    "dev": "tsx watch server.ts"
+  },
+  "dependencies": {
+    "@google/genai": "^1.0.0",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.19.43",
+    "tsx": "^4.15.0",
+    "typescript": "^5.4.5"
+  }
+}

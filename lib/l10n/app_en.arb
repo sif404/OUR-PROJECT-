@@ -1,0 +1,1394 @@
+{
+  "@@locale": "en",
+  "stadium": "Prince Hussein bin Abdullah II Stadium",
+  "@stadium": {
+    "description": "Name of the main stadium venue"
+  },
+  "tagline": "Your gateway to matchday — activate once, walk straight in every time.",
+  "@tagline": {
+    "description": "Main marketing tagline shown on the welcome screen"
+  },
+  "city": "Amra Smart City",
+  "@city": {
+    "description": "Name of the smart city"
+  },
+  "ctaTicket": "Activate my ticket",
+  "@ctaTicket": {
+    "description": "Primary CTA button to start ticket activation flow"
+  },
+  "ctaCreate": "Create an account",
+  "@ctaCreate": {
+    "description": "Secondary CTA button to navigate to account creation"
+  },
+  "ctaGuest": "Browse as guest",
+  "@ctaGuest": {
+    "description": "Tertiary link to continue without creating an account"
+  },
+  "ctaLogin": "Already have an account — Log in",
+  "@ctaLogin": {
+    "description": "Link to navigate to the login screen"
+  },
+  "toggleLabel": "العربية",
+  "@toggleLabel": {
+    "description": "Language toggle button label (shows the other language name)"
+  },
+  "notifHead": "Notifications",
+  "@notifHead": {
+    "description": "Header for the notifications panel"
+  },
+  "notif1Title": "Welcome to AMRA Smart City",
+  "@notif1Title": {
+    "description": "Title of the first welcome notification"
+  },
+  "notif1Body": "Your account hub for matchday, transit, and city services.",
+  "@notif1Body": {
+    "description": "Body of the first welcome notification"
+  },
+  "notif2Title": "Activate your ticket",
+  "@notif2Title": {
+    "description": "Title of the ticket activation notification"
+  },
+  "notif2Body": "Activate your ticket to unlock your matchday experience.",
+  "@notif2Body": {
+    "description": "Body of the ticket activation notification"
+  },
+  "notif3Title": "Set up your account",
+  "@notif3Title": {
+    "description": "Title of the account setup notification"
+  },
+  "notif3Body": "Create an account to enjoy all smart city services, or continue as a guest.",
+  "@notif3Body": {
+    "description": "Body of the account setup notification"
+  },
+  "guestNote": "Guest mode has limited access. Activate anytime for seating, wayfinding and rewards.",
+  "@guestNote": {
+    "description": "Informational note about limitations in guest mode"
+  },
+  "btnContinue": "Continue",
+  "@btnContinue": {
+    "description": "Generic continue button label used across multi-step flows"
+  },
+  "m1Eyebrow": "Step 1 of 5",
+  "@m1Eyebrow": {
+    "description": "Step indicator for the ticket activation method screen"
+  },
+  "m1Title": "How do you want to activate your ticket?",
+  "@m1Title": {
+    "description": "Title of the method selection screen"
+  },
+  "m1Sub": "Choose the method that works best for you — we'll verify the ticket automatically.",
+  "@m1Sub": {
+    "description": "Subtitle explaining the method selection screen"
+  },
+  "m1QrTitle": "Scan QR code",
+  "@m1QrTitle": {
+    "description": "Title for QR code activation method card"
+  },
+  "m1QrDesc": "Open the camera and point it at your ticket's QR code — its details load automatically.",
+  "@m1QrDesc": {
+    "description": "Description for QR code activation method card"
+  },
+  "m1ManualTitle": "Manual activation",
+  "@m1ManualTitle": {
+    "description": "Title for manual ticket activation method card"
+  },
+  "m1ManualDesc": "Enter your ticket ID and the verification code sent with your ticket.",
+  "@m1ManualDesc": {
+    "description": "Description for manual ticket activation method card"
+  },
+  "qrEyebrow": "Scan code",
+  "@qrEyebrow": {
+    "description": "Eyebrow label for the QR scanning screen"
+  },
+  "qrTitle": "Point the camera at the QR code",
+  "@qrTitle": {
+    "description": "Title for the QR scanning screen"
+  },
+  "qrSub": "Line up the code inside the frame — it's detected automatically, no button needed.",
+  "@qrSub": {
+    "description": "Subtitle with instructions for QR scanning"
+  },
+  "qrChip": "🎫 Ticket {ticketId} ready to detect",
+  "@qrChip": {
+    "description": "Status chip showing the ticket ID while waiting for QR detection",
+    "placeholders": {
+      "ticketId": {
+        "type": "String",
+        "example": "JFA26-88213"
+      }
+    }
+  },
+  "qrDetected": "Detected — Continue",
+  "@qrDetected": {
+    "description": "Success message shown when QR code is successfully detected"
+  },
+  "qrManualInstead": "Enter the details manually instead",
+  "@qrManualInstead": {
+    "description": "Fallback link to switch from QR scan to manual entry"
+  },
+  "manualTitle": "Enter your ticket ID",
+  "@manualTitle": {
+    "description": "Title for the manual ticket ID entry screen"
+  },
+  "manualSub": "You'll find this on your e-ticket or printed ticket.",
+  "@manualSub": {
+    "description": "Subtitle explaining where to find the ticket ID"
+  },
+  "manualLabel": "Ticket ID",
+  "@manualLabel": {
+    "description": "Form field label for ticket ID input"
+  },
+  "mcEyebrow": "Verify ownership",
+  "@mcEyebrow": {
+    "description": "Eyebrow label for the manual code/verification screen"
+  },
+  "mcTitle": "Enter the verification code",
+  "@mcTitle": {
+    "description": "Title for the verification code entry screen"
+  },
+  "mcSub": "We sent a code to the email address associated with this ticket.",
+  "@mcSub": {
+    "description": "Subtitle explaining that a verification code was sent via email"
+  },
+  "mcLabel": "Verification code",
+  "@mcLabel": {
+    "description": "Form field label for verification code input"
+  },
+  "mcVerifyBtn": "Verify ticket",
+  "@mcVerifyBtn": {
+    "description": "Button to submit the verification code and verify ticket ownership"
+  },
+  "resendPrefix": "Didn't get the code? ",
+  "@resendPrefix": {
+    "description": "Text prefix preceding the resend code action link"
+  },
+  "resendAction": "Resend ({countdown})",
+  "@resendAction": {
+    "description": "Resend code action button with countdown timer",
+    "placeholders": {
+      "countdown": {
+        "type": "String",
+        "example": "0:45"
+      }
+    }
+  },
+  "otpTitle": "Confirm you own this ticket",
+  "@otpTitle": {
+    "description": "Title for the OTP ownership confirmation screen"
+  },
+  "otpSub": "We sent a 6-digit code to the email the ticket was sent to",
+  "@otpSub": {
+    "description": "Subtitle explaining the 6-digit OTP was sent to the ticket email"
+  },
+  "otpConfirmBtn": "Confirm and verify ownership",
+  "@otpConfirmBtn": {
+    "description": "Button to confirm OTP and verify ticket ownership"
+  },
+  "caEyebrow": "Create account",
+  "@caEyebrow": {
+    "description": "Eyebrow label for the create account screen"
+  },
+  "caTitle": "Set up your AXN account",
+  "@caTitle": {
+    "description": "Title for the account creation screen"
+  },
+  "caSub": "This account links your ticket to you and stays with you long after the event ends.",
+  "@caSub": {
+    "description": "Subtitle explaining the purpose and benefits of creating an account"
+  },
+  "lblFullName": "Full name",
+  "@lblFullName": {
+    "description": "Form field label for full name input"
+  },
+  "lblNationalId": "National ID",
+  "@lblNationalId": {
+    "description": "Form field label for national ID number input"
+  },
+  "lblDob": "Date of birth",
+  "@lblDob": {
+    "description": "Form field label for date of birth input"
+  },
+  "phDob": "DD / MM / YYYY",
+  "@phDob": {
+    "description": "Placeholder text for date of birth field format"
+  },
+  "lblMobile": "Mobile number",
+  "@lblMobile": {
+    "description": "Form field label for mobile phone number input"
+  },
+  "lblEmail": "Email",
+  "@lblEmail": {
+    "description": "Form field label for email address input"
+  },
+  "hintEmail": "Filled in automatically from the ticket — you can edit it if needed.",
+  "@hintEmail": {
+    "description": "Helper hint text explaining the email field is pre-filled from ticket"
+  },
+  "lblPassword": "Password",
+  "@lblPassword": {
+    "description": "Form field label for password input"
+  },
+  "lblConfirmPassword": "Confirm password",
+  "@lblConfirmPassword": {
+    "description": "Form field label for password confirmation input"
+  },
+  "caCreateBtn": "Create account",
+  "@caCreateBtn": {
+    "description": "Submit button to finalize account creation"
+  },
+  "bindTitle": "Binding successful",
+  "@bindTitle": {
+    "description": "Title shown when ticket-account-device binding is successful"
+  },
+  "bindSub": "Your ticket is now linked to your account and this device — ready for event entry.",
+  "@bindSub": {
+    "description": "Subtitle confirming ticket binding and readiness for entry"
+  },
+  "bind1Title": "Ticket ⇄ Account",
+  "@bind1Title": {
+    "description": "Heading for the ticket-to-account binding explanation"
+  },
+  "bind1Sub": "One ticket = one account, and it can't be activated again",
+  "@bind1Sub": {
+    "description": "Explanation that a ticket can only be bound to one account"
+  },
+  "bind2Title": "Account ⇄ Device",
+  "@bind2Title": {
+    "description": "Heading for the account-to-device binding explanation"
+  },
+  "bind2Sub": "Changing devices requires re-verification of your identity",
+  "@bind2Sub": {
+    "description": "Explanation that switching devices needs identity re-verification"
+  },
+  "bind3Title": "QR status",
+  "@bind3Title": {
+    "description": "Heading for the QR code status explanation"
+  },
+  "bind3Sub": "The QR code is now marked \"activated\" and can't be used again",
+  "@bind3Sub": {
+    "description": "Explanation that the QR code is marked activated and consumed"
+  },
+  "bindEnterBtn": "Enter AXN",
+  "@bindEnterBtn": {
+    "description": "Button to enter the main AXN app after successful binding"
+  },
+  "loginTitle": "Welcome back",
+  "@loginTitle": {
+    "description": "Title for the returning user login screen"
+  },
+  "loginSub": "Your account is always here — check your event history, rewards, and memories anytime.",
+  "@loginSub": {
+    "description": "Subtitle on login screen describing account benefits"
+  },
+  "lblUserOrEmail": "Username or email",
+  "@lblUserOrEmail": {
+    "description": "Form field label accepting either username or email for login"
+  },
+  "forgotPassword": "Forgot password?",
+  "@forgotPassword": {
+    "description": "Link to initiate password recovery flow"
+  },
+  "loginBtn": "Log in",
+  "@loginBtn": {
+    "description": "Login submit button label"
+  },
+  "noAccountBtn": "Don't have an account — Create one",
+  "@noAccountBtn": {
+    "description": "Link from login screen to navigate to account creation"
+  },
+  "obSkip": "Skip",
+  "@obSkip": {
+    "description": "Button to skip remaining onboarding slides"
+  },
+  "obNext": "Next",
+  "@obNext": {
+    "description": "Button to advance to the next onboarding slide"
+  },
+  "obStart": "Get started",
+  "@obStart": {
+    "description": "Button on the final onboarding slide to begin the app"
+  },
+  "splash_wordAx": "AX",
+  "@splash_wordAx": {
+    "description": "First two letters of the AXN wordmark on the splash screen"
+  },
+  "splash_wordN": "N",
+  "@splash_wordN": {
+    "description": "Accented N letter of the AXN wordmark on the splash screen"
+  },
+  "splash_tagline": "AMRA EXCHANGE NEXUS",
+  "@splash_tagline": {
+    "description": "Full acronym expansion shown below the AXN wordmark on splash"
+  },
+  "ob1Title": "Discover the Smart City",
+  "@ob1Title": {
+    "description": "Onboarding slide 1 title — smart city discovery feature"
+  },
+  "ob1Desc": "A live map showing events and crowd density in Amra city moment by moment.",
+  "@ob1Desc": {
+    "description": "Onboarding slide 1 description — live map with events and crowds"
+  },
+  "ob2Title": "Find Your Car Instantly",
+  "@ob2Title": {
+    "description": "Onboarding slide 2 title — find my car parking feature"
+  },
+  "ob2Desc": "The Find My Car feature guides you directly to your parking spot without getting lost.",
+  "@ob2Desc": {
+    "description": "Onboarding slide 2 description — car finding navigation assistance"
+  },
+  "ob3Title": "Your Safety First",
+  "@ob3Title": {
+    "description": "Onboarding slide 3 title — emergency safety feature"
+  },
+  "ob3Desc": "With one tap on the emergency button, your live location is sent directly to response teams.",
+  "@ob3Desc": {
+    "description": "Onboarding slide 3 description — SOS emergency location sharing"
+  },
+  "ob4Title": "Ready to Get Started?",
+  "@ob4Title": {
+    "description": "Onboarding slide 4 title — final call to action"
+  },
+  "ob4Desc": "Plan your visit with smart AI-powered recommendations and enjoy every moment.",
+  "@ob4Desc": {
+    "description": "Onboarding slide 4 description — AI planning recommendations"
+  },
+  "welcome_pipe": "|",
+  "@welcome_pipe": {
+    "description": "Vertical separator character between minor links on the welcome screen"
+  },
+  "methodCardQrIcon": "▦",
+  "@methodCardQrIcon": {
+    "description": "Icon glyph displayed in the QR method selection card"
+  },
+  "methodCardManualIcon": "✎",
+  "@methodCardManualIcon": {
+    "description": "Icon glyph displayed in the manual method selection card"
+  },
+  "manualPlaceholder": "JFA26-XXXXXX",
+  "@manualPlaceholder": {
+    "description": "Example ticket ID format shown as placeholder in the manual entry field"
+  },
+  "maskedEmailChip": "✉️",
+  "@maskedEmailChip": {
+    "description": "Envelope icon prefix shown in the masked email chip on OTP screen"
+  },
+  "maskedEmailExample": "sa***@gmail.com",
+  "@maskedEmailExample": {
+    "description": "Example masked email address format shown on OTP screen"
+  },
+  "otpDots": "•",
+  "@otpDots": {
+    "description": "Bullet character used as placeholder for empty OTP digit boxes"
+  },
+  "settings_title": "Settings",
+  "settings_back": "Back",
+  "settings_notifications": "Notifications",
+  "settings_pushTitle": "Push notifications",
+  "settings_pushSub": "Alerts, updates and offers",
+  "settings_safeZoneTitle": "Safe zone alerts",
+  "settings_safeZoneSub": "Geofence entry and exit notifications",
+  "settings_groupActivityTitle": "Group activity alerts",
+  "settings_groupActivitySub": "Updates from your family groups",
+  "settings_legacyCapsuleTitle": "Legacy Capsule alerts",
+  "settings_legacyCapsuleSub": "Delivery and detection notifications",
+  "settings_manageSafeZones": "Manage safe zones",
+  "settings_preferences": "Preferences",
+  "settings_language": "Language",
+  "settings_langEn": "EN",
+  "settings_langAr": "AR",
+  "settings_theme": "Theme",
+  "settings_themeLight": "Light",
+  "settings_themeDark": "Dark",
+  "settings_themeSystem": "System",
+  "settings_accessibility": "Accessibility",
+  "settings_fontSize": "Font size",
+  "settings_fontSmall": "Small",
+  "settings_fontDefault": "Default",
+  "settings_fontLarge": "Large",
+  "settings_fontXLarge": "X-Large",
+  "settings_locationSharing": "Location & sharing",
+  "settings_shareLocationTitle": "Share live location",
+  "settings_shareLocationSub": "Visible to linked family members",
+  "settings_accountSecurity": "Account & security",
+  "settings_changePin": "Change PIN / password",
+  "settings_biometricTitle": "Biometric unlock",
+  "settings_biometricSub": "Face ID or fingerprint",
+  "settings_helpSupport": "Help & support",
+  "settings_helpCenter": "Help center / FAQ",
+  "settings_contactSupport": "Contact support",
+  "settings_reportProblem": "Report a problem",
+  "settings_about": "About",
+  "settings_version": "Version",
+  "settings_terms": "Terms of service",
+  "settings_privacy": "Privacy policy",
+  "settings_logoutNote": "Log out is available on your profile",
+  "home_liveVisitors": "LIVE STADIUM VISITORS",
+  "home_stadiumEnv": "STADIUM ENVIRONMENTS & CROWD",
+  "home_quickAssist": "QUICK ASSIST",
+  "home_avatarInitials": "AX",
+  "home_liveBadge": "LIVE",
+  "home_hello": "Ahlan, {name} 👋",
+  "@home_hello": {
+    "placeholders": {
+      "name": {
+        "type": "String",
+        "example": "User Name"
+      }
+    }
+  },
+  "home_visitorsToday": "Visitors today",
+  "home_atGate": "at gate",
+  "home_inStands": "in stands",
+  "home_entering": "entering",
+  "home_envAir": "Air",
+  "home_envAirSub": "Circulation & quality",
+  "home_envNoise": "Noise",
+  "home_envNoiseSub": "Decibel levels",
+  "home_envCrowd": "Crowd",
+  "home_envCrowdSub": "Zone density",
+  "home_envSafety": "Safety",
+  "home_envSafetySub": "Incident monitor",
+  "home_eveningPlan": "Your evening plan",
+  "home_eveningPlanSub": "Tap to see your curated schedule",
+  "home_eveningTime": "6:00 PM — 11:30 PM",
+  "home_eveningStops": "{count} stops",
+  "@home_eveningStops": {
+    "placeholders": {
+      "count": {
+        "type": "String",
+        "example": "4"
+      }
+    }
+  },
+  "home_rewardsTitle": "Matchday Rewards",
+  "home_rewardsPoints": "{points} pts",
+  "@home_rewardsPoints": {
+    "placeholders": {
+      "points": {
+        "type": "String",
+        "example": "1,240"
+      }
+    }
+  },
+  "home_rewardsSub": "Scan in, collect, unlock perks",
+  "home_rewardsTierBadge": "Silver tier",
+  "home_assistFindCar": "Find My Car",
+  "home_assistRoute": "Route Planner",
+  "home_assistSmartExit": "Smart Exit",
+  "home_assistAI": "AI Planner",
+  "home_assistSOS": "Emergency SOS",
+  "home_navHome": "Home",
+  "home_navRoute": "Route",
+  "home_navAlert": "Alert",
+  "home_navAI": "AI",
+  "home_navSettings": "Settings",
+  "profile_title": "Profile",
+  "profile_verifiedBadge": "Verified ticket holder",
+  "profile_ticketBound": "Ticket {id} · Bound",
+  "@profile_ticketBound": {
+    "placeholders": {
+      "id": {
+        "type": "String",
+        "example": "JFA26-88213"
+      }
+    }
+  },
+  "profile_eventsAttended": "{count} events",
+  "@profile_eventsAttended": {
+    "placeholders": {
+      "count": {
+        "type": "String",
+        "example": "3"
+      }
+    }
+  },
+  "profile_rewardsPoints": "{points} reward points",
+  "@profile_rewardsPoints": {
+    "placeholders": {
+      "points": {
+        "type": "String",
+        "example": "1,240"
+      }
+    }
+  },
+  "profile_memberSince": "Member since {date}",
+  "@profile_memberSince": {
+    "placeholders": {
+      "date": {
+        "type": "String",
+        "example": "Mar 2026"
+      }
+    }
+  },
+  "profile_sectionActivity": "Recent activity",
+  "profile_sectionFamily": "My family groups",
+  "profile_sectionHistory": "Event history",
+  "profile_sectionRewards": "Rewards & perks",
+  "profile_createGroup": "＋  Create group",
+  "profile_noGroupsYet": "No groups yet — create one to link family members.",
+  "profile_logout": "Log out",
+  "profile_editProfile": "Edit profile",
+  "family_appTitle": "Family account",
+  "family_brand": "AXN Family",
+  "family_connecting": "Connecting...",
+  "family_connectMemberBtn": "Connect member",
+  "family_consentLabel": "I agree to share my live location and match-day status with this family group.",
+  "family_doneBtn": "Done",
+  "family_memberChildName": "Child",
+  "family_memberChildRel": "Child",
+  "family_memberParentName": "Parent",
+  "family_memberParentRel": "Parent",
+  "family_memberSiblingName": "Sibling",
+  "family_memberSiblingRel": "Sibling",
+  "family_notNowBtn": "Not now",
+  "family_permCollectedBullet1": "Location permission is required to share your real-time position.",
+  "family_permCollectedBullet2": "Contacts permission is required to connect family members.",
+  "family_permCollectedBullet3": "Notification permission is required for safety alerts.",
+  "family_permCollectedTitle": "Permissions collected",
+  "family_permOverviewLabel": "Location & safety permissions",
+  "family_permPrivacyBullet1": "Only approved family members can see your status.",
+  "family_permPrivacyBullet2": "Your live location is shared only during match-day sessions.",
+  "family_permPrivacyBullet3": "Data is not used for marketing.",
+  "family_permPrivacyTitle": "Privacy and data use",
+  "family_permUsedBullet1": "Shared only for live family safety and arrival updates.",
+  "family_permUsedBullet2": "Used to coordinate group meeting points.",
+  "family_permUsedBullet3": "Not stored beyond the event.",
+  "family_permUsedTitle": "How permissions are used",
+  "family_safetySubtitle": "Keep everyone connected and safe while you enjoy the match.",
+  "family_safetyTitle": "Family safety",
+  "family_statusConnect": "Connect",
+  "family_statusConnected": "Connected",
+  "family_statusPending": "Pending",
+  "family_successSubtitle": "Your family member has been added successfully.",
+  "family_successTitle": "Family connected",
+  "family_yourFamilyLabel": "Your family",
+  "rewards_title": "Rewards",
+  "rewards_currentTier": "Current tier",
+  "rewards_silver": "Silver",
+  "rewards_bronze": "Bronze",
+  "rewards_gold": "Gold",
+  "rewards_platinum": "Platinum",
+  "rewards_pointsBalance": "Points balance",
+  "rewards_pointsThisMatch": "This matchday",
+  "rewards_earnMore": "Earn more points",
+  "rewards_scanIn": "Scan in at entry +50",
+  "rewards_orderFood": "Order food & beverage +20/order",
+  "rewards_visitExhibit": "Visit Legacy Capsule exhibit +100",
+  "rewards_bringFriend": "Bring a friend +150",
+  "rewards_redeemFor": "Redeem points for",
+  "rewards_merchDiscount": "15% merchandise voucher",
+  "rewards_merchCost": "1,200 pts",
+  "rewards_foodVoucher": "Food & beverage voucher",
+  "rewards_foodCost": "800 pts",
+  "rewards_earlyEntry": "Early stadium entry pass",
+  "rewards_earlyEntryCost": "2,500 pts",
+  "rewards_museumAccess": "Legacy Capsule private access",
+  "rewards_museumAccessCost": "5,000 pts",
+  "smartExit_title": "Smart Exit",
+  "smartExit_subtitle": "Pick the fastest way out based on live crowd data",
+  "smartExit_recommended": "Recommended",
+  "smartExit_fastest": "Fastest route",
+  "smartExit_crowd": "Crowd level",
+  "smartExit_low": "Low",
+  "smartExit_medium": "Medium",
+  "smartExit_high": "High",
+  "smartExit_eta": "ETA {minutes} min",
+  "@smartExit_eta": {
+    "placeholders": {
+      "minutes": {
+        "type": "String",
+        "example": "6"
+      }
+    }
+  },
+  "smartExit_gate": "Gate {name}",
+  "@smartExit_gate": {
+    "placeholders": {
+      "name": {
+        "type": "String",
+        "example": "A"
+      }
+    }
+  },
+  "smartExit_start": "Start exit guidance",
+  "smartExit_live": "LIVE",
+  "smartExit_etaLabel": "ETA",
+  "smartExit_distanceLabel": "DISTANCE",
+  "smartExit_exitStrategy": "Exit Strategy",
+  "smartExit_findMyCar": "Find My Car",
+  "smartExit_coolingZones": "Cooling Zones",
+  "smartExit_firstAid": "First Aid",
+  "smartExit_foodCourt": "Food Court",
+  "smartExit_comingSoon": "Coming soon",
+  "smartExit_startGuidedExit": "START GUIDED EXIT",
+  "sos_title": "Emergency SOS",
+  "sos_subtitle": "Hold for 3 seconds to alert response teams with your live location",
+  "sos_holdButton": "HOLD TO ACTIVATE",
+  "sos_cancel": "Cancel",
+  "sos_countdown": "Releasing cancels… {seconds}",
+  "@sos_countdown": {
+    "placeholders": {
+      "seconds": {
+        "type": "String",
+        "example": "3"
+      }
+    }
+  },
+  "sos_confirmationTitle": "Alert sent successfully",
+  "sos_confirmationSub": "Response teams are on their way. Your live location is being shared.",
+  "sos_sharingLocation": "Sharing live location",
+  "sos_callResponder": "Call responder",
+  "sos_falseAlarm": "False alarm — cancel alert",
+  "sos_done": "Done",
+  "findCar_title": "Find My Car",
+  "findCar_subtitle": "Guided navigation to your parking spot",
+  "findCar_zone": "Zone {id}",
+  "@findCar_zone": {
+    "placeholders": {
+      "id": {
+        "type": "String",
+        "example": "B-3"
+      }
+    }
+  },
+  "findCar_row": "Row {name}",
+  "@findCar_row": {
+    "placeholders": {
+      "name": {
+        "type": "String",
+        "example": "F"
+      }
+    }
+  },
+  "findCar_spot": "Spot {number}",
+  "@findCar_spot": {
+    "placeholders": {
+      "number": {
+        "type": "String",
+        "example": "142"
+      }
+    }
+  },
+  "findCar_level": "Level {num}",
+  "@findCar_level": {
+    "placeholders": {
+      "num": {
+        "type": "String",
+        "example": "P2"
+      }
+    }
+  },
+  "findCar_walkTime": "~{minutes} min walk",
+  "@findCar_walkTime": {
+    "placeholders": {
+      "minutes": {
+        "type": "String",
+        "example": "7"
+      }
+    }
+  },
+  "findCar_startNav": "Start navigation",
+  "findCar_updateSpot": "Update my spot",
+  "trip_title": "Evening Plan",
+  "trip_subtitle": "Your curated schedule for tonight's matchday",
+  "trip_startsAt": "Starts at {time}",
+  "@trip_startsAt": {
+    "placeholders": {
+      "time": {
+        "type": "String",
+        "example": "6:00 PM"
+      }
+    }
+  },
+  "trip_endsAt": "Ends at {time}",
+  "@trip_endsAt": {
+    "placeholders": {
+      "time": {
+        "type": "String",
+        "example": "11:30 PM"
+      }
+    }
+  },
+  "trip_stops": "{count} stops",
+  "@trip_stops": {
+    "placeholders": {
+      "count": {
+        "type": "String",
+        "example": "4"
+      }
+    }
+  },
+  "trip_totalDuration": "Total duration ~{hours}h",
+  "@trip_totalDuration": {
+    "placeholders": {
+      "hours": {
+        "type": "String",
+        "example": "5.5"
+      }
+    }
+  },
+  "trip_leaveNow": "Leave now",
+  "trip_leaveEarlier": "Leave earlier tonight",
+  "trip_leaveSoon": "Leave soon to make it on time for your first stop: {stop}",
+  "@trip_leaveSoon": {
+    "placeholders": {
+      "stop": {
+        "type": "String",
+        "example": "Fan Zone"
+      }
+    }
+  },
+  "trip_kickoffIn": "Kickoff in {time}",
+  "@trip_kickoffIn": {
+    "placeholders": {
+      "time": {
+        "type": "String",
+        "example": "45m"
+      }
+    }
+  },
+  "trip_sharePlanPrefix": "My evening plan:",
+  "trip_categoryLabel": "Category",
+  "trip_categoryFood": "Food & drink",
+  "trip_categorySport": "Sport",
+  "trip_categoryArt": "Art & culture",
+  "trip_categoryRelax": "Relax",
+  "trip_hintTitleExample": "e.g. Dinner at Rem",
+  "trip_hintDetailsExample": "e.g. 10 min walk",
+  "trip_planCopied": "Plan copied to share",
+  "trip_addedToPlan": "Added to your plan",
+  "trip_planCleared": "Plan cleared",
+  "trip_clearThisPlanTitle": "Clear this plan?",
+  "trip_clearThisPlanBody": "All {count} stops will be removed. You can build a new plan from scratch after.",
+  "@trip_clearThisPlanBody": {
+    "placeholders": {
+      "count": {
+        "type": "String",
+        "example": "4"
+      }
+    }
+  },
+  "trip_clearPlan": "Clear plan",
+  "trip_cancel": "Cancel",
+  "trip_opensDirectionsNextStop": "Opens directions to your next stop",
+  "trip_tonightsPlan": "Tonight's plan",
+  "trip_leaveByHint": "Leave by 5:40 to catch the fan zone before kickoff.",
+  "trip_navigateNextStop": "Navigate to next stop",
+  "trip_addAStop": "Add a stop",
+  "trip_getDirections": "Get directions",
+  "trip_addToPlan": "Add to plan",
+  "trip_fieldTitle": "Title",
+  "trip_fieldTime": "Time",
+  "trip_fieldDetailsOptional": "Details (optional)",
+  "trip_hintExample": "e.g. 6:45 PM",
+  "trip_formError": "Add a title and a time like \"6:45 PM\".",
+  "trip_myEveningPlan": "My evening plan",
+  "trip_notePrefix": "Note: ",
+  "aiPlanner_title": "AI Planner",
+  "aiPlanner_subtitle": "Tell us what you want — we'll build your perfect matchday experience",
+  "aiPlanner_placeholder": "e.g. I want to watch the warm-up, grab food before kickoff, and visit the Legacy Capsule at halftime…",
+  "aiPlanner_send": "Generate plan",
+  "aiPlanner_thinking": "Planning your perfect evening…",
+  "aiPlanner_suggestions": "Try saying:",
+  "aiPlanner_suggestion1": "Family-friendly with early exit",
+  "aiPlanner_suggestion2": "Premium lounge + meet the players",
+  "aiPlanner_suggestion3": "Quick visit: match only",
+  "aiPlanner_online": "ONLINE",
+  "aiPlanner_simulatedMode": "Running in simulated mode — add a real API key in Settings to enable live responses.",
+  "aiPlanner_welcome": "Ahlan! I am Abu Al-Areef (ابو العريف), your AXN Smart City co-pilot. How can I help you plan your evening, navigate the stadium, find parking, or suggest places to visit in Jordan today?",
+  "aiPlanner_quickQuery1": "How is Gate 1 density?",
+  "aiPlanner_quickQuery2": "Suggest a quiet cafe",
+  "aiPlanner_quickQuery3": "Find my parking spot",
+  "aiPlanner_quickQuery4": "Plan my evening in Amman",
+  "aiPlanner_quickQuery5": "Places to visit in Jordan",
+  "aiPlanner_responseDensity": "Gate 1 area currently has moderate density (17,842 visitors). However, Gate 3 is extremely clear with no queues! I suggest using Gate 3 for a seamless exit.",
+  "aiPlanner_responseCafe": "I highly recommend Al-Waha Rooftop Cafe! It has a gorgeous view of Prince Al Hussein Stadium and serves traditional cardamom coffee. It's just a 3-minute walk from Gate 1.",
+  "aiPlanner_responseParking": "Based on your active sync, your car is parked in Zone B, Slot 42. Follow the marked path from Sector C to exit directly next to Zone B.",
+  "aiPlanner_responseEvening": "For a perfect evening in Jordan, I suggest visiting the Amman Citadel to watch a spectacular sunset over the hills, followed by hot Knafeh from Habibah downtown, and then tea at a cozy rooftop in Rainbow Street.",
+  "aiPlanner_responseJordan": "Jordan is rich in wonders! You must see Petra (the rose-red Nabataean city), Wadi Rum (stay in a Martian bubble camp), float in the Dead Sea, explore the Roman ruins of Jerash, and visit Ajloun Castle.",
+  "aiPlanner_responseOfftopic": "Ahlan! As Abu Al-Areef, your AXN Smart City Co-Pilot, my expertise is strictly dedicated to Prince Al Hussein Stadium facilities, gates, parking, and Jordan evening exploration itineraries. I cannot answer general or off-topic questions. How can I assist with your stadium visit today?",
+  "aiPlanner_responseDefault": "Ahlan! I am Abu Al-Areef, your AXN Smart City Co-Pilot. I specialize exclusively in Prince Al Hussein Stadium guidance, matchday facilities, parking, and Jordan exploration itineraries. How can I assist with your stadium visit, Gate density, or evening plans today?",
+  "activeRoute_title": "Active Route",
+  "activeRoute_nextStop": "Next stop",
+  "activeRoute_eta": "ETA {time}",
+  "@activeRoute_eta": {
+    "placeholders": {
+      "time": {
+        "type": "String",
+        "example": "2 min"
+      }
+    }
+  },
+  "activeRoute_progress": "{current} of {total}",
+  "@activeRoute_progress": {
+    "placeholders": {
+      "current": {
+        "type": "String",
+        "example": "1"
+      },
+      "total": {
+        "type": "String",
+        "example": "4"
+      }
+    }
+  },
+  "activeRoute_remaining": "{count} stops remaining",
+  "@activeRoute_remaining": {
+    "placeholders": {
+      "count": {
+        "type": "String",
+        "example": "3"
+      }
+    }
+  },
+  "activeRoute_endRoute": "End route",
+  "activeRoute_detailsTitle": "AI Route Details",
+  "activeRoute_detailsSubtitle": "Step-by-Step Egress Guidance",
+  "activeRoute_guidanceBadge": "ACTIVE PATH GUIDANCE",
+  "activeRoute_optimizedBadge": "AI OPTIMIZED",
+  "activeRoute_timelineTitle": "STEP-BY-STEP EGRESS TIMELINE",
+  "activeRoute_returnToMap": "RETURN TO MAP",
+  "activeRoute_oasisLabel": "Air-Cooled Rest Oasis",
+  "activeRoute_timeLeft": "TIME LEFT",
+  "activeRoute_distance": "DISTANCE",
+  "activeRoute_flowStatus": "FLOW STATUS",
+  "childSafety_title": "Child Safety",
+  "childSafety_subtitle": "Link children with safety wristbands and get instant alerts if they move outside safe zones.",
+  "childSafety_linkWristband": "Link a wristband",
+  "childSafety_safeZones": "Safe zones",
+  "childSafety_alertHistory": "Alert history",
+  "childAlert_title": "Child Alert",
+  "childAlert_active": "Alert active",
+  "childAlert_locationShared": "Live location shared with response teams",
+  "childAlert_resolve": "Mark as resolved",
+  "profile_personalInfo": "Personal information",
+  "profile_nationalId": "National ID and verification",
+  "profile_myGroups": "My groups",
+  "profile_groupsCount": "{count} groups",
+  "@profile_groupsCount": {
+    "placeholders": {
+      "count": {
+        "type": "String",
+        "example": "2"
+      }
+    }
+  },
+  "profile_groupsHint": "Create a Family group to enable Child Safety",
+  "profile_myVisits": "My Visits",
+  "profile_visitHistory": "Visit history",
+  "profile_legacyCapsule": "Legacy Capsule",
+  "profile_savedMemories": "Your saved memories",
+  "profile_more": "More",
+  "profile_privacyData": "Privacy & Data",
+  "profile_everythingStored": "Everything stored on this device",
+  "profile_settings": "Settings",
+  "profile_rewards": "My Rewards",
+  "profile_account": "Account",
+  "profile_noGroups": "No groups yet",
+  "profile_noGroupsSub": "Create a group to sync locations with family or friends during your next visit.",
+  "profile_seeAll": "See all",
+  "profile_points": "Points",
+  "profile_trips": "Trips",
+  "profile_tier": "Tier",
+  "profile_family": "Family",
+  "profile_nationalVerified": "National ID verified",
+  "profile_group": "Group",
+  "profile_phoneVerified": "Phone verified",
+  "profile_members": "{count} members",
+  "@profile_members": {
+    "placeholders": {
+      "count": {
+        "type": "String",
+        "example": "4"
+      }
+    }
+  },
+  "profile_pointsToGold": "{points} pts to Gold",
+  "@profile_pointsToGold": {
+    "placeholders": {
+      "points": {
+        "type": "String",
+        "example": "80"
+      }
+    }
+  },
+  "profile_silver": "Silver",
+  "profile_matchday": "Matchday",
+  "profile_streak": "Streak",
+  "profile_previewGroups": "Preview groups empty state",
+  "demo_title": "DEMO CONTROLS",
+  "demo_subtitle": "Not visible to regular users",
+  "demo_simulate": "Simulate emergency broadcast",
+  "demo_simulateSub": "Forces evacuation mode over any screen",
+  "demo_active": "Emergency broadcast active",
+  "demo_activeSub": "Evacuation mode is showing on the app now",
+  "demo_live": "Broadcast live on screen",
+  "demo_startBtn": "Simulate broadcast",
+  "demo_stopBtn": "Stop simulation",
+  "demo_note": "Tap stop anytime to instantly restore the normal screen — safe to use live during the demo.",
+  "home_pointsLabel": "{points} pts",
+  "@home_pointsLabel": {
+    "placeholders": {
+      "points": {
+        "type": "String",
+        "example": "320"
+      }
+    }
+  },
+  "home_envAirValue": "24°C",
+  "home_envNoiseValue": "72 dB",
+  "home_envSafetyValue": "0 incidents",
+  "sos_topbarTitle": "Emergency SOS",
+  "sos_topbarSubtitle": "Confirm to alert the on-site safety team",
+  "sos_typeName": "Medical Emergency",
+  "sos_typeDescription": "The nearest medical team will be dispatched to your location",
+  "sos_countdownLabel": "seconds",
+  "sos_countdownAutoPrefix": "Auto-sending in — ",
+  "sos_countdownHint": "you can cancel anytime before it's sent.",
+  "sos_locationSectionLabel": "YOUR LOCATION",
+  "sos_locationLabel": "Location",
+  "sos_locationValue": "Gate 14, Section 214",
+  "sos_gpsAccuracy": "GPS Accurate",
+  "sos_serviceSectionLabel": "RESPONDING SERVICE",
+  "sos_serviceName": "Medical Response Team",
+  "sos_serviceMeta": "On-site paramedics",
+  "sos_serviceEta": "3",
+  "sos_eta": "min",
+  "sos_confirmButtonLabel": "Send Alert Now",
+  "sos_cancelButtonLabel": "Cancel",
+  "sos_cancelledToast": "SOS alert cancelled",
+  "sos_safetyNote": "Your location and emergency type are shared only with the on-site safety team.",
+  "sos_sendStep1": "Locating you…",
+  "sos_sendStep2": "Notifying safety team…",
+  "sos_sendStep3": "Dispatching responder…",
+  "sos_sendingTitle": "Sending your alert",
+  "sos_sendingSubtitle": "Please stay where you are — help is on the way.",
+  "sos_successTitle": "Help is on the way",
+  "sos_successSubtitle": "A responder has been notified and is heading to your location.",
+  "sos_successEtaValue": "3 min",
+  "sos_successEtaLabel": "Estimated arrival",
+  "sos_successNearestValue": "Gate 14",
+  "sos_successNearestLabel": "Nearest exit",
+  "sos_successDoneLabel": "Done",
+  "sos_failedTitle": "Alert failed to send",
+  "sos_failedSubtitle": "We couldn't reach the safety team. Try again or call the operations center directly.",
+  "sos_failedRetryLabel": "Try Again",
+  "sos_failedCallLabel": "Call Operations Center",
+  "rewards_points": "Points",
+  "rewards_pointsToTier": "{points} pts to {tier}",
+  "@rewards_pointsToTier": {
+    "placeholders": {
+      "points": {
+        "type": "String",
+        "example": "x"
+      },
+      "tier": {
+        "type": "String",
+        "example": "x"
+      }
+    }
+  },
+  "rewards_trips": "Trips",
+  "rewards_tierLabel": "Tier",
+  "rewards_streakTitle": "{days}-day streak",
+  "@rewards_streakTitle": {
+    "placeholders": {
+      "days": {
+        "type": "String",
+        "example": "x"
+      }
+    }
+  },
+  "rewards_streakSub": "Keep it up — one slip and it resets",
+  "rewards_currentLevelLabel": "Current Level",
+  "rewards_xpValue": "{xp} XP",
+  "@rewards_xpValue": {
+    "placeholders": {
+      "xp": {
+        "type": "String",
+        "example": "x"
+      }
+    }
+  },
+  "rewards_pointsExpireTitle": "Points Expire",
+  "rewards_featuredAchievement": "FEATURED ACHIEVEMENT",
+  "rewards_greenLevelLabel": "Green level",
+  "rewards_redeemButton": "Redeem",
+  "rewards_yourTripsThisMonth": "Your trips this month",
+  "rewards_fromSource": "From {source}",
+  "@rewards_fromSource": {
+    "placeholders": {
+      "source": {
+        "type": "String",
+        "example": "x"
+      }
+    }
+  },
+  "rewards_convertedTitle": "Converted",
+  "rewards_convertedBody": "Your green points were added to your Rewards balance.",
+  "rewards_doneButton": "Done",
+  "rewards_costLabel": "Cost",
+  "rewards_pointsSuffix": "{points} points",
+  "@rewards_pointsSuffix": {
+    "placeholders": {
+      "points": {
+        "type": "String",
+        "example": "x"
+      }
+    }
+  },
+  "rewards_redeemedTitle": "Redeemed",
+  "rewards_showCodeAt": "Show this code at {place}",
+  "@rewards_showCodeAt": {
+    "placeholders": {
+      "place": {
+        "type": "String",
+        "example": "x"
+      }
+    }
+  },
+  "rewards_pageTitle": "Rewards",
+  "childSafety_lastUpdateLabel": "Last update",
+  "childSafety_closeAlertButton": "Close alert",
+  "rewards_silverVsGold": "Silver vs. Gold",
+  "childAlert_activeTitle": "Child Safety Alert",
+  "childAlert_activeMetaTriggeredAt": "Triggered at ",
+  "childAlert_activeMetaTime": "4:52 PM",
+  "childAlert_metaSourceSep": " · Source: ",
+  "childAlert_metaSource": "Safe Zone Monitor",
+  "childAlert_activeGuidanceBold": "Stay calm.",
+  "childAlert_activeGuidanceRest": " Follow the recommended steps to locate your child safely.",
+  "childAlert_foundTitle": "Child Found",
+  "childAlert_foundMetaConfirmedAt": "Confirmed at ",
+  "childAlert_foundMetaTime": "4:57 PM",
+  "childAlert_foundGuidanceBold": "Great news.",
+  "childAlert_foundGuidanceRest": " Child 1 has been located and is safe. You can close this alert whenever you're ready.",
+  "childAlert_resolvedTitle": "Alert Resolved",
+  "childAlert_resolvedMetaClosedAt": "Closed at ",
+  "childAlert_resolvedMetaTime": "4:58 PM",
+  "childAlert_resolvedMetaReviewedBySep": " · Reviewed by ",
+  "childAlert_resolvedMetaReviewedBy": "Stadium Safety Team",
+  "childAlert_resolvedGuidance": "This alert has been closed and archived. Reach out to Family Safety anytime if you have questions.",
+  "childAlert_unavailableTitle": "Location Unavailable",
+  "childAlert_unavailableMetaLastSignal": "Last signal ",
+  "childAlert_unavailableGuidanceBold": "Signal lost, not lost hope.",
+  "childAlert_unavailableGuidanceRest": " Contact Emergency Support — stadium staff can locate Child 1 using venue cameras.",
+  "childAlertSticky_activeStatusLine": "Left Safe Zone near Gate C",
+  "childAlertSticky_connectedLabel": "Connected",
+  "childAlertSticky_lastKnownLocLabel": "Last known location",
+  "childAlertSticky_outerConcourseValue": "Outer Concourse, near Gate C",
+  "childAlertSticky_activeLocTime": "38s ago",
+  "childAlertSticky_foundStatusLine": "Back inside Safe Zone, with a guardian nearby",
+  "childAlertSticky_currentLocLabel": "Current location",
+  "childAlertSticky_foundLocValue": "Gate C, Reunification Point",
+  "childAlertSticky_foundLocTime": "5s ago",
+  "childAlertSticky_unavailableStatusLine": "Signal lost near Gate C",
+  "childAlertSticky_disconnectedLabel": "Disconnected",
+  "childAlertSticky_unavailableLocTime": "6 min ago",
+  "sosHome_allSystemsNormal": "All systems normal",
+  "sosHome_title": "Emergency assistance",
+  "sosHome_subtitle": "Help is one press away. Your location is shared automatically the moment you request help.",
+  "sosHome_holdPrefix": "Press and hold ",
+  "sosHome_holdInstructions": "for {seconds} seconds to alert emergency teams.\nThis is not a false-alarm risk — release anytime to cancel.",
+  "@sosHome_holdInstructions": {
+    "placeholders": {
+      "seconds": {
+        "type": "String",
+        "example": "x"
+      }
+    }
+  },
+  "sosHome_servicesLabel": "Emergency services",
+  "sosHome_locationLabel": "Your location",
+  "sosHome_contactsLabel": "Emergency contacts",
+  "sosHome_detectedLocationLabel": "Detected location",
+  "sosHome_locationValue": "Section 214, Gate 5 concourse",
+  "sosHome_gpsAccuracy": "±15m",
+  "sosHome_shareLiveLocation": "Share live location",
+  "sosHome_shareSubtitle": "Visible to responders while active",
+  "sosHome_serviceNamePolice": "Police",
+  "sosHome_serviceNameAmbulance": "Ambulance",
+  "sosHome_serviceNameCivilDefense": "Civil Defense",
+  "sosHome_serviceNameMedical": "Medical emergency",
+  "sosHome_serviceNameChildSafety": "Child safety",
+  "sosHome_serviceNameLostPerson": "Lost person",
+  "sosHome_contact1Name": "Stadium Operations Center",
+  "sosHome_contact1Role": "24/7 control room",
+  "sosHome_contact2Name": "Medical response team",
+  "sosHome_contact2Role": "On-site paramedics",
+  "sosHome_contact3Name": "Emergency contact",
+  "sosHome_contact3Role": "Personal — added by you",
+  "sosHome_settingsTitle": "SOS settings",
+  "sosHome_holdLabel": "HOLD {seconds} SEC",
+  "@sosHome_holdLabel": {
+    "placeholders": {
+      "seconds": {
+        "type": "String",
+        "example": "x"
+      }
+    }
+  },
+  "findCar_startWalkback": "START WALKBACK GUIDANCE",
+  "findCar_activeLocatorLabel": "Active Parking Locator",
+  "findCar_zoneLabel": "Zone B · Row 12 · Gate 2",
+  "findCar_savedAgo": "Saved 3 hours ago",
+  "findCar_etaMinutes": "3 min",
+  "findCar_distance": "196m left",
+  "findCar_savedSlotLabel": "SAVED PARKING SLOT",
+  "findCar_compassTracking": "COMPASS TRACKING",
+  "evac_title": "Evacuation Simulation",
+  "evac_heading": "Emergency Evacuation",
+  "evac_instructions": "Follow the nearest exit route. Stay calm and move quickly to the assembly point.",
+  "evac_disclaimer": "This is a simulation. In a real emergency, follow official instructions.",
+  "evac_exitButton": "Exit Simulation",
+  "createGroup_title": "Create a group",
+  "createGroup_subtitle": "Choose the group type first.",
+  "createGroup_familyTitle": "Family",
+  "createGroup_familySubtitle": "Child safety features",
+  "createGroup_groupTitle": "Group",
+  "createGroup_groupSubtitle": "Friends / general group",
+  "createGroup_phoneTitle": "Phone",
+  "createGroup_mobileLabel": "Mobile",
+  "createGroup_mobilePlaceholder": "+962 7 9XXX XXXX",
+  "createGroup_nationalIdTitle": "National ID",
+  "createGroup_otpTitle": "OTP",
+  "createGroup_otpSubtitle": "Enter the verification code.",
+  "createGroup_finishButton": "Finish",
+  "createGroup_defaultFamilyName": "New family",
+  "createGroup_defaultGroupName": "New group",
+  "childSafety_moderateSeverity": "MODERATE SEVERITY",
+  "rewards_completedToday": "Completed today",
+  "rewards_missionPointsPlus": "+{points} points",
+  "@rewards_missionPointsPlus": {
+    "placeholders": {
+      "points": {
+        "type": "String",
+        "example": "x"
+      }
+    }
+  },
+  "rewards_missionPointsPlusPts": "+{points} pts",
+  "@rewards_missionPointsPlusPts": {
+    "placeholders": {
+      "points": {
+        "type": "String",
+        "example": "x"
+      }
+    }
+  },
+  "rewards_healthDisclaimer": "General information, not a reflection of your personal health status.",
+  "rewards_convertNote": "Converted points move to your Rewards balance and reset your green progress.",
+  "rewards_reachToUnlock": "Reach {points} points to unlock",
+  "@rewards_reachToUnlock": {
+    "placeholders": {
+      "points": {
+        "type": "String",
+        "example": "x"
+      }
+    }
+  },
+  "childSafety_brandLabel": "AXN Smart City",
+  "childSafety_pageTitle": "Child Safety",
+  "childSafety_pageSubtitle": "Keep your family connected during your visit.",
+  "childSafety_childInitials": "C1",
+  "childSafety_childName": "Child 1",
+  "childSafety_ageGroup": "Age 8–12",
+  "childSafety_locationSectionLabel": "Live location",
+  "childSafety_zoneSectionLabel": "Safety zone",
+  "childSafety_zoneTitle": "Allowed area · North Stand & Concourse",
+  "childSafety_activitySectionLabel": "Activity",
+  "childSafety_lastSeenLabel": "Last seen",
+  "childSafety_checkInLabel": "Check-in status",
+  "childSafety_actionsSectionLabel": "Quick actions",
+  "childSafety_callChildLabel": "Call Child",
+  "childSafety_locateChildLabel": "Locate Child",
+  "childSafety_checkInRequestLabel": "Send Check-in Request",
+  "childSafety_emergencyAlertLabel": "Emergency Alert",
+  "childSafety_timeline1Location": "Concourse B, Section 14",
+  "childSafety_timeline1Time": "Just now",
+  "childSafety_timeline2Location": "Food Court, North Stand",
+  "childSafety_timeline2Time": "14 min ago",
+  "childSafety_timeline3Location": "Entered via Gate C",
+  "childSafety_timeline3Time": "52 min ago",
+  "childSafety_normalStatusText": "Safe and Connected",
+  "childSafety_normalStatusSub": "Updated just now",
+  "childSafety_normalLocationValue": "Section 14, Concourse B",
+  "childSafety_normalLocationTime": "12s ago",
+  "childSafety_normalZoneStatusText": "Inside Safe Zone",
+  "childSafety_normalZoneSub": "You'll be notified if Child 1 leaves this area.",
+  "childSafety_normalLastSeen": "12 seconds ago",
+  "childSafety_normalCheckInText": "Checked in · 5 min ago",
+  "childSafety_warningConnLabel": "Connected · weak signal",
+  "childSafety_warningStatusText": "Left Safe Zone",
+  "childSafety_warningStatusSub": "Updated 1 min ago",
+  "childSafety_warningLocationValue": "Near Gate C, Outer Concourse",
+  "childSafety_warningLocationTime": "1 min ago",
+  "childSafety_warningZoneSub": "Child 1 is 40m outside the allowed area near Gate C.",
+  "childSafety_warningLastSeen": "1 minute ago",
+  "childSafety_warningCheckInText": "Check-in requested · awaiting reply",
+  "childSafety_offlineStatusText": "Device Offline",
+  "childSafety_offlineStatusSub": "Last seen 18 min ago",
+  "childSafety_offlineLocationValue": "Last known: Concourse B",
+  "childSafety_offlineLocationTime": "18 min ago",
+  "childSafety_offlineZoneStatusText": "Location unavailable",
+  "childSafety_offlineZoneSub": "Reconnecting — showing the last known position.",
+  "childSafety_offlineLastSeen": "18 minutes ago",
+  "childSafety_offlineCheckInText": "Unavailable while offline",
+  "childSafety_summaryAlertTriggered": "Alert triggered",
+  "childSafety_summaryResolved": "Resolved",
+  "childSafety_summaryDuration": "Duration",
+  "childSafety_summaryOutcome": "Outcome",
+  "childSafety_summaryDurationValue": "6 minutes",
+  "childSafety_summaryOutcomeValue": "Reunited at Gate C",
+  "childSafety_recommendedActionsLabel": "Recommended actions",
+  "childSafety_navigateToLocation": "Navigate to Location",
+  "childSafety_shareLocation": "Share Location",
+  "childSafety_contactEmergencySupport": "Contact Emergency Support",
+  "childSafety_alertSummaryLabel": "Alert summary",
+  "childAlert_locationSectionLabel": "Location",
+  "trip_stop1Title": "Fan Zone Warm-up",
+  "trip_stop1Sub": "Jersey meet-up · 6 min walk",
+  "trip_stop2Title": "Jordan vs Spain",
+  "trip_stop2Sub": "Kickoff · Public screening",
+  "trip_stop2Note": "Leave home by 5:40 — roads near the stadium fill up fast before kickoff.",
+  "trip_stop3Title": "Riverside Art Walk",
+  "trip_stop3Sub": "Live sketching · 10 min walk",
+  "trip_stop4Title": "Quiet Garden Lounge",
+  "trip_stop4Sub": "Seated · 5 min walk",
+  "rewards_ga1Label": "Walked instead of driving",
+  "rewards_ga1Source": "Live Map",
+  "rewards_ga2Label": "Used shared transport",
+  "rewards_ga3Label": "Skipped a private car trip",
+  "rewards_ga3Source": "Smart Parking Sync",
+  "rewards_greenInfoFact": "Walking short distances is generally linked to improved mood.",
+  "rewards_m1Label": "Report a violation",
+  "rewards_m2Label": "Keep a 7-day streak",
+  "rewards_m3Label": "Refer a friend",
+  "rewards_m4Label": "Complete your profile",
+  "rewards_r1Title": "Free coffee",
+  "rewards_r1Desc": "One free hot or cold drink, any size, at participating cafés.",
+  "rewards_r2Title": "Priority parking spot",
+  "rewards_r2Desc": "Reserved parking for a full day at participating downtown lots.",
+  "rewards_r3Title": "Gallery pass",
+  "rewards_r3Desc": "Full-day entry for two to the National Gallery's current exhibition.",
+  "rewards_v1Title": "Free Drink",
+  "rewards_v1Desc": "One free hot or cold beverage.",
+  "rewards_v1Expiry": "Expires 15 Aug",
+  "rewards_v2Title": "20% Merch Discount",
+  "rewards_v2Desc": "Off official team merchandise.",
+  "rewards_v2Expiry": "Expires 30 Sep",
+  "rewards_v3Title": "Food Combo",
+  "rewards_v3Desc": "Combo meal at the food court.",
+  "rewards_v3Expiry": "Expires 10 Oct",
+  "rewards_boardRankLabel": "You're #3 in AMRA",
+  "rewards_boardSubLabel": "260 points to reach #2",
+  "rewards_leaderboardTitle": "Leaderboard",
+  "rewards_leaderboardSubtitle": "Amman, this month",
+  "rewards_h1Label": "Reported a violation",
+  "rewards_h2Label": "Daily streak bonus",
+  "rewards_h3Label": "Redeemed: Free coffee",
+  "rewards_h4Label": "Referred a friend",
+  "rewards_todayLabel": "Today",
+  "rewards_yesterdayLabel": "Yesterday",
+  "rewards_daysAgoLabel": "3 days ago",
+  "rewards_matchAttendance": "Match Attendance",
+  "rewards_qrCheckIn": "QR Check-in",
+  "rewards_convertedGreenPoints": "Converted Green points",
+  "rewards_recommendationCopy": "You have enough points to redeem a Free Drink Coupon.",
+  "rewards_achievementTitle": "Stadium Explorer",
+  "rewards_achievementSub": "Visited every stadium zone during your visit.",
+  "rewards_greenLevelSheetTitle": "Green level",
+  "rewards_greenLevelSheetSubtitle": "Based on your trips across the app",
+  "rewards_historySheetTitle": "History",
+  "rewards_historySheetSubtitle": "Every point, tracked.",
+  "rewards_missionsSheetTitle": "Missions",
+  "rewards_missionsSheetSubtitle": "Simple actions that keep you compliant — and earn points.",
+  "rewards_pointMultiplier": "Point multiplier",
+  "rewards_monthlyBonusReward": "Monthly bonus reward",
+  "rewards_prioritySupport": "Priority support",
+  "rewards_freeReward": "Free reward",
+  "rewards_included": "Included",
+  "rewards_availableLocations": "Available at 6 locations in Amman",
+  "rewards_valid30Days": "Valid 30 days",
+  "rewards_earnMorePoints": "Earn more points",
+  "rewards_recentActivity": "Recent Activity",
+  "rewards_yourVouchers": "Your Vouchers",
+  "rewards_redeemYourPoints": "Redeem your points",
+  "rewards_levelAware": "Aware",
+  "rewards_levelActive": "Active",
+  "rewards_levelGreenGuardian": "Green Guardian",
+  "rewards_lbName1": "Lina M.",
+  "rewards_lbName2": "Omar T.",
+  "rewards_lbName3": "Sara K.",
+  "rewards_lbName4": "Yousef A.",
+  "rewards_greeting": "Good evening",
+  "rewards_goldTierLabel": "Gold tier",
+  "rewards_silverMemberName": "Silver Member",
+  "rewards_goldMemberName": "Gold Member",
+  "rewards_pointsLockedSuffix": "{points} points{locked}",
+  "@rewards_pointsLockedSuffix": {
+    "placeholders": {
+      "locked": {
+        "type": "String",
+        "example": "x"
+      },
+      "points": {
+        "type": "String",
+        "example": "x"
+      }
+    }
+  },
+  "rewards_lockedSuffix": " · locked",
+  "food_bizmodel_desc": "Local food brands can reach visitors through curated placement, experiences, and future event-day offers — while AXN keeps the food journey inside the city experience.",
+  "food_bizmodel_label": "FOOD PARTNER MODEL",
+  "food_bizmodel_title": "Turn food into part of the city experience.",
+  "food_brand_habibah_category": "Sweets",
+  "food_brand_habibah_tag": "Jordanian classic",
+  "food_brand_mansafha_category": "Jordanian",
+  "food_brand_mansafha_tag": "Mansaf experience",
+  "food_brand_qahwa_category": "Coffee",
+  "food_brand_qahwa_tag": "Local coffee pick",
+  "food_cat_coffee": "Coffee",
+  "food_cat_jordanian": "Jordanian",
+  "food_cat_quickBite": "Quick bite",
+  "food_cat_sweets": "Sweets",
+  "food_chip_eventDiscovery": "Event-day discovery",
+  "food_chip_futureOffers": "Future offers",
+  "food_chip_partnerVisibility": "Partner visibility",
+  "food_explore": "Explore",
+  "food_eyebrow": "FOOD EXPERIENCE",
+  "food_hero_badge": "LOCAL FLAVORS",
+  "food_hero_desc": "Quick stops, Jordanian flavors, and familiar local brands — built into the visit, not left outside it.",
+  "food_hero_title": "Eat your way through the night.",
+  "food_pill_group": "Group",
+  "food_pill_local": "Local",
+  "food_pill_quick": "Quick",
+  "food_section_count": "3 PICKS",
+  "food_section_eyebrow": "LOCAL PICKS",
+  "food_section_title": "Jordanian flavors, made part of the journey.",
+  "food_subtitle": "Discover food as part of the experience — from a quick coffee to a proper Jordanian bite.",
+  "food_title": "Good food,\nright along the way.",
+  "facilities_care_desc": "AXN brings essential support into the journey — not as a list of pins, but as part of how people experience the city.",
+  "facilities_care_label": "CARE LAYER",
+  "facilities_care_title": "A better visit\nlooks after you.",
+  "facilities_eyebrow": "CARE / COMFORT",
+  "facilities_health_body": "Make health and first-aid support easy to discover when you or someone with you needs it.",
+  "facilities_health_chip1": "First aid",
+  "facilities_health_chip2": "Health support",
+  "facilities_health_label": "HEALTH SUPPORT",
+  "facilities_health_title": "Help when it matters.",
+  "facilities_note": "The idea: AXN does not just tell visitors where a facility is — it helps them understand when and why it matters during their journey.",
+  "facilities_prayer_body": "Find a calm, respectful space for prayer without interrupting the flow of your visit.",
+  "facilities_prayer_chip1": "Quiet space",
+  "facilities_prayer_chip2": "Prayer support",
+  "facilities_prayer_label": "PRAYER SPACES",
+  "facilities_prayer_title": "A moment to pause.",
+  "facilities_quick_health_subtitle": "Help when needed",
+  "facilities_quick_health_title": "Health",
+  "facilities_quick_prayer_subtitle": "Quiet moments",
+  "facilities_quick_prayer_title": "Prayer",
+  "facilities_section_label": "ESSENTIAL SPACES",
+  "facilities_section_title": "Support beyond the destination",
+  "facilities_subtitle": "Quiet spaces, prayer, and health support — built into the experience so you can focus on the moment.",
+  "facilities_title": "Everything you need,\nwhen you need a pause."
+}
