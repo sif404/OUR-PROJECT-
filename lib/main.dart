@@ -8,6 +8,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'firebase_options.dart';
 import 'l10n/app_localizations.dart';
 import 'models/app_scope.dart';
+import 'models/groups.dart'; // ← أضفنا هاد الاستيراد عشان demoGroups
 import 'models/groups_scope.dart';
 import 'models/i18n.dart';
 import 'routes.dart';
@@ -40,6 +41,8 @@ import 'screens/trip_screen.dart';
 import 'screens/ai_planner_screen.dart' as ai_planner;
 import 'screens/find_my_car_screen.dart';
 import 'screens/evacuation_screen.dart';
+import 'screens/food_screen.dart';
+import 'screens/facilities_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -88,7 +91,8 @@ class AxnApp extends ConsumerStatefulWidget {
 
 class _AxnAppState extends ConsumerState<AxnApp> {
   late final LocaleController _locale;
-  final GroupsController _groups = GroupsController();
+  // ← التعديل الأساسي: تمرير demoGroups كقيمة ابتدائية بدل ما يبلش فاضي
+  final GroupsController _groups = GroupsController(initialGroups: demoGroups);
 
   @override
   void initState() {
@@ -195,6 +199,8 @@ class _AxnAppState extends ConsumerState<AxnApp> {
                     return CreateGroupFlowScreen(groups: groups);
                   },
                   Routes.tripScreen: (_) => const EveningPlanScreen(),
+                  Routes.food: (_) => const FoodScreen(),
+                  Routes.facilities: (_) => const FacilitiesScreen(),
                   Routes.rewards: (_) => const rewards.RewardsPage(),
                   Routes.aiPlanner: (_) => const ai_planner.AIPlannerScreen(),
                   Routes.findMyCar: (_) => const FindMyCarScreen(),

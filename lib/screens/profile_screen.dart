@@ -213,6 +213,7 @@ class AxnSvgIcons {
     return SvgPicture.string(svg, width: size, height: size);
   }
 }
+
 // ============================================================================
 // PROFILE SCREEN
 // ============================================================================
@@ -600,6 +601,7 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
     );
   }
 }
+
 // ============================================================================
 // AVATAR HEADER
 // ============================================================================
@@ -1520,31 +1522,6 @@ const List<VisitItem> demoVisits = [
   ),
 ];
 
-const List<GroupData> demoGroups = [
-  GroupData(
-    id: 'al-amins',
-    name: 'The Al-Amins',
-    type: GroupType.family,
-    members: [
-      GroupMember(name: 'username', initials: 'US', color: Color(0xFFCFE8DE), role: 'Admin (You)', verified: VerificationStatus.national, live: true),
-      GroupMember(name: 'Rami Amin', initials: 'RM', color: Color(0xFFD9D3F2), role: 'Member', verified: VerificationStatus.national, live: true),
-      GroupMember(name: 'Lina Amin', initials: 'LA', color: Color(0xFFF7E3C4), role: 'Member (Child)', verified: VerificationStatus.national, live: false),
-    ],
-    consentGranted: true,
-  ),
-  GroupData(
-    id: 'petra-weekend',
-    name: 'Petra weekend',
-    type: GroupType.group,
-    members: [
-      GroupMember(name: 'Sami Adel', initials: 'SA', color: Color(0xFFE4EFFC), role: 'Admin', verified: VerificationStatus.phone, live: true),
-      GroupMember(name: 'Huda Kamal', initials: 'HK', color: Color(0xFFFCE3E9), role: 'Member', verified: VerificationStatus.phone, live: true),
-      GroupMember(name: 'Omar Tal', initials: 'OT', color: Color(0xFFE1F3E2), role: 'Member', verified: VerificationStatus.phone, live: false),
-      GroupMember(name: 'Nour Saadi', initials: 'NS', color: Color(0xFFFBEAD0), role: 'Member', verified: VerificationStatus.none, live: false),
-    ],
-    consentGranted: true,
-  ),
-];
 // ============================================================================
 // MY VISITS SCREEN
 // ============================================================================
@@ -1965,6 +1942,7 @@ class _VisitPill extends StatelessWidget {
     );
   }
 }
+
 // ============================================================================
 // LEGACY CAPSULE SCREEN (HUB)
 // ============================================================================
@@ -2631,6 +2609,7 @@ class CapsuleFoundScreen extends StatelessWidget {
     );
   }
 }
+
 // ============================================================================
 // PRIVACY & DATA SCREEN
 // ============================================================================
@@ -3315,6 +3294,7 @@ class _FieldRow extends StatelessWidget {
     );
   }
 }
+
 // ============================================================================
 // INVITE & EARN SCREEN
 // ============================================================================
@@ -3603,6 +3583,7 @@ class _StepRow extends StatelessWidget {
     );
   }
 }
+
 // ============================================================================
 // CREATE GROUP FLOW
 // ============================================================================
@@ -3995,6 +3976,7 @@ class _CreateGroupInfoScreenState extends State<CreateGroupInfoScreen> {
     );
   }
 }
+
 class CreateGroupInviteScreen extends StatefulWidget {
   final String groupName;
   final bool isFamily;
@@ -4605,6 +4587,7 @@ class CreateGroupSuccessScreen extends StatelessWidget {
     );
   }
 }
+
 // ============================================================================
 // GROUP DETAILS SCREEN (Map, Members, Settings)
 // ============================================================================
