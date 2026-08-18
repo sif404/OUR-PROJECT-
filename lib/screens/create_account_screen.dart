@@ -416,7 +416,9 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
         : _msg(scope, en: 'Passport Number', ar: 'رقم جواز السفر');
 
     return StandardScreenScaffold(
-      onBack: () => goTo(Routes.otp),
+      // FIX: was hardcoded to Routes.otp, which sent the user back into
+      // the OTP flow instead of welcome when re-entering this screen.
+      onBack: () => goTo(Routes.welcome),
       activeStep: 3,
       bodyChildren: [
         Eyebrow(text: scope.t('caEyebrow')),

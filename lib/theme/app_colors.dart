@@ -14,8 +14,8 @@ class AppColors {
 
   static const white = Color(0xFFFFFFFF);
 
-  static const paper = Color(0xFFFBF6EA);
-  static const stone = Color(0xFFF1E7D2);
+  static const paper = Color(0xFFFFFFFF);
+  static const stone = Color(0xFFFFFFFF);
   static const stoneLine = Color(0xFFE4D5B7);
 
   static const void_ = Color(0xFF17130E);
@@ -50,9 +50,9 @@ class AppColors {
   // Onboarding / splash palette
   // ============================================================
 
-  static const paper1 = Color(0xFFFBF6EA);
-  static const paper2 = Color(0xFFEEE2C6);
-  static const paper3 = Color(0xFFDFCEA3);
+  static const paper1 = Color(0xFFFFFFFF);
+  static const paper2 = Color(0xFFFFFFFF);
+  static const paper3 = Color(0xFFFFFFFF);
 
   static const ink = Color(0xFF2B2420);
   static const muted = Color(0xFF8C7D63);
@@ -100,7 +100,7 @@ class AppColors {
 
   static Color getBg(bool isLight) {
     return isLight
-        ? const Color(0xFFF7F6F2)
+        ? const Color(0xFFFFFFFF)
         : const Color(0xFF121212);
   }
 

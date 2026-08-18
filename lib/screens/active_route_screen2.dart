@@ -289,6 +289,7 @@ class _ActiveRouteScreenState extends State<ActiveRouteScreen>
           textDirection: isAr ? TextDirection.rtl : TextDirection.ltr,
           child: Column(
             children: [
+              // 1. شريط الرأس النظيف مع زر التفضيل السريع
               Padding(
                 padding: const EdgeInsets.fromLTRB(16, 12, 16, 10),
                 child: Row(
@@ -330,6 +331,7 @@ class _ActiveRouteScreenState extends State<ActiveRouteScreen>
                         ],
                       ),
                     ),
+                    // زر التفضيلات بالأعلى بدلاً من إخفائه بالأسفل
                     InkWell(
                       borderRadius: BorderRadius.circular(20),
                       onTap: () => _openRoutePreferences(context, isAr),
@@ -365,6 +367,7 @@ class _ActiveRouteScreenState extends State<ActiveRouteScreen>
                 ),
               ),
 
+              // 2. أزرار الوجهات المريحة (Categories Tabs)
               SizedBox(
                 height: 38,
                 child: ListView(
@@ -412,6 +415,7 @@ class _ActiveRouteScreenState extends State<ActiveRouteScreen>
 
               const SizedBox(height: 12),
 
+              // 3. المحتوى القابل للتمرير براحة تامة
               Expanded(
                 child: SingleChildScrollView(
                   padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -419,6 +423,7 @@ class _ActiveRouteScreenState extends State<ActiveRouteScreen>
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      // بطاقة المسار الرئيسية المدمجة (Map + HUD Stats)
                       Container(
                         decoration: BoxDecoration(
                           color: cardColor,
@@ -434,6 +439,7 @@ class _ActiveRouteScreenState extends State<ActiveRouteScreen>
                         ),
                         child: Column(
                           children: [
+                            // معاينة الخريطة التفاعلية
                             SizedBox(
                               height: 160,
                               child: ClipRRect(
@@ -456,6 +462,7 @@ class _ActiveRouteScreenState extends State<ActiveRouteScreen>
                                         },
                                       ),
                                     ),
+                                    // شارة حالة المسار
                                     PositionedDirectional(
                                       top: 10,
                                       start: 10,
@@ -492,6 +499,7 @@ class _ActiveRouteScreenState extends State<ActiveRouteScreen>
                               ),
                             ),
 
+                            // ملخص الوقت والمسافة ومستوى الازدحام
                             Padding(
                               padding: const EdgeInsets.fromLTRB(16, 12, 16, 14),
                               child: Column(
@@ -499,6 +507,7 @@ class _ActiveRouteScreenState extends State<ActiveRouteScreen>
                                   Row(
                                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     children: [
+                                      // الوقت المتبقي
                                       Column(
                                         crossAxisAlignment: CrossAxisAlignment.start,
                                         children: [
@@ -522,6 +531,7 @@ class _ActiveRouteScreenState extends State<ActiveRouteScreen>
                                         ],
                                       ),
 
+                                      // المسافة
                                       Column(
                                         crossAxisAlignment: CrossAxisAlignment.start,
                                         children: [
@@ -545,6 +555,7 @@ class _ActiveRouteScreenState extends State<ActiveRouteScreen>
                                         ],
                                       ),
 
+                                      // شارة الازدحام
                                       Container(
                                         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
                                         decoration: BoxDecoration(
@@ -575,6 +586,7 @@ class _ActiveRouteScreenState extends State<ActiveRouteScreen>
 
                                   const SizedBox(height: 10),
 
+                                  // شريط التقدم النحيف
                                   ClipRRect(
                                     borderRadius: BorderRadius.circular(6),
                                     child: LinearProgressIndicator(
@@ -593,6 +605,7 @@ class _ActiveRouteScreenState extends State<ActiveRouteScreen>
 
                       const SizedBox(height: 12),
 
+                      // 4. بطاقة التنبيه والتوجيه الذكي الموحدة (Smart Dynamic Alert)
                       if (_selectedCategory == RouteCategory.gate)
                         Container(
                           padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
@@ -650,6 +663,7 @@ class _ActiveRouteScreenState extends State<ActiveRouteScreen>
 
                       const SizedBox(height: 14),
 
+                      // 5. نقاط الراحة والخدمات المساعدة (Waypoints Chips)
                       Row(
                         children: [
                           Text(
@@ -709,6 +723,7 @@ class _ActiveRouteScreenState extends State<ActiveRouteScreen>
 
                       const SizedBox(height: 16),
 
+                      // 6. عنوان الخط الزمني للمسار
                       Text(
                         isAr ? "خطوات المغادرة التتابعية" : "EGRESS TIMELINE",
                         style: AppTextStyles.mono(
@@ -720,6 +735,7 @@ class _ActiveRouteScreenState extends State<ActiveRouteScreen>
                       ),
                       const SizedBox(height: 12),
 
+                      // 7. الخط الزمني بدون حشر أو تقطيع
                       ListView.builder(
                         shrinkWrap: true,
                         physics: const NeverScrollableScrollPhysics(),
@@ -740,12 +756,13 @@ class _ActiveRouteScreenState extends State<ActiveRouteScreen>
                         },
                       ),
 
-                      const SizedBox(height: 80),
+                      const SizedBox(height: 80), // مساحة للأزرار الثابتة بالأسفل
                     ],
                   ),
                 ),
               ),
 
+              // 8. شريط الإجراءات السفلي النظيف والثابت (Floating Bottom Actions)
               Container(
                 padding: const EdgeInsets.fromLTRB(16, 10, 16, 12),
                 decoration: BoxDecoration(
@@ -754,6 +771,7 @@ class _ActiveRouteScreenState extends State<ActiveRouteScreen>
                 ),
                 child: Row(
                   children: [
+                    // زر العودة للخريطة
                     Expanded(
                       flex: 1,
                       child: SizedBox(
@@ -780,6 +798,7 @@ class _ActiveRouteScreenState extends State<ActiveRouteScreen>
                       ),
                     ),
                     const SizedBox(width: 10),
+                    // زر إعادة حساب المسار الرئيسي
                     Expanded(
                       flex: 2,
                       child: SizedBox(
@@ -961,6 +980,7 @@ class _ActiveRouteScreenState extends State<ActiveRouteScreen>
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
+          // خط ومؤشر النقطة
           SizedBox(
             width: 20,
             child: Column(
@@ -999,6 +1019,7 @@ class _ActiveRouteScreenState extends State<ActiveRouteScreen>
             ),
           ),
           const SizedBox(width: 12),
+          // تفاصيل الخطوة
           Expanded(
             child: Padding(
               padding: const EdgeInsets.only(bottom: 18.0),
@@ -1039,6 +1060,7 @@ class _ActiveRouteScreenState extends State<ActiveRouteScreen>
                       height: 1.35,
                     ),
                   ),
+                  // بطاقة واحة التبريد إن وجدت
                   if (step.isOasis && step.oasisName != null) ...[
                     const SizedBox(height: 8),
                     Container(
